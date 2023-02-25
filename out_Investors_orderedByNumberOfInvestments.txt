@@ -1,0 +1,9 @@
+10	Peter Lynch
+10	George Soros
+10	Carl Icahn
+10	Paul Tudor Jones
+10	David Einhorn
+10	Ray Dalio
+5	Elon Musk
+4	John Paulson
+2	Warren Buffet
