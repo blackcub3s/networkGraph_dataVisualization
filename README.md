@@ -39,12 +39,12 @@ En executar el programa `__main__grafGuay.py` veureu que hi ha **5 maneres** pos
 
 Noteu que tots els filtres estan comentats, menys el que no té filtre i que mostra totes les files que hi ha dins l'excel representades al graf (1. sense filtre). Per accedir a un dels 4 filtres que hi ha (de punts 2.1 a 2.4 de la llista següent) comenta tots els altres i deixa només com a codi llegible per l'intèrpret de python al filtre en questió escollit:
 
-		1. sense filtre
-        2. amb filtre
-            2.1 per intervalForecast_Sell_Date
-            2.2 per Investor	
-            2.3 per Time_Difference
-            2.4 per timelapse de Time_Difference
+1. sense filtre
+2. amb filtre
+    - 2.1 per intervalForecast_Sell_Date
+    - 2.2 per Investor	
+    - 2.3 per Time_Difference
+    - 2.4 per timelapse de Time_Difference
 
 Per exemple, si vols aplicar filtres per `Investor` hauràs d'assegurar-te que tots els altres (inclòs "1.sense filtre") estan comentats i no s'executen. Us explico cada cas particular a continuació:
     
@@ -186,13 +186,12 @@ definir el (ls) del grafic. Podeu fer un gràfic de 0 a 3 anys, per veure els in
 
 
 
-# AUTORIA
+# AUTORIA i DADES DE CONTACTE
 
-Programa fet per [@blackcub3s](https://www.instagram.com/blackcub3s/)  (Santi Sánchez Sans)
-Linkedin: 
-Analista de dades amb python
+Programa fet per Santiago Sánchez Sans, Analista de dades amb Python. Podeu contactar-me a:
 
-
+- Instagram: [@blackcub3s](https://www.instagram.com/blackcub3s/)
+- Linkedin: [Santiago Sánchez Sans](https://www.linkedin.com/in/santiago-s%C3%A1nchez-sans-451b53127/) 
 
 
 
