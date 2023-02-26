@@ -156,25 +156,24 @@ definir el (ls) del grafic. Podeu fer un gràfic de 0 a 3 anys, per veure els in
 # EXPLICACIÓ DELS FITXERS I CARPETES UTILITZATS PEL PROGRAMA  __main__grafGuay.py: #
 
 
-- [SSS.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/SSS.py):
+- **[SSS.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/SSS.py)**:
 	genera el graf a partir de l'excel (prenent els diferents Investor(s) i Investment(s), com a nodes; fent edges entre Investor(s) i 
 	Investment(s) i passant com a propietat de les edges els atributs "Forecast_Sell_Date"(data en que es van duplicar el valor de les accions després de comprar-les -o data prevista en que es farà-) i "Buy_Date" (data en que es van adquirir les accions).
 
-- [__main__grafGuay.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/__main__grafGuay.py):
+- **[__main__grafGuay.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/__main__grafGuay.py)**:
 	Construeix el graf i integra les funcions dels altres fitxers, permet modificar els paràmetres dels filtres. Té un filtre especial,
 	posat dins un while: que genera time lapses entre dues dates (una imatge per cada any que passa). Per accedir a cada filtre cal eliminar els comentaris fets amb cometes triples, tant per sota com per damunt. NOTA: No es poden usar filtres sobre filtres. Només es pot fer servir un tipus de filtre per cada gràfic fet.
 
-- [filtres.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/filtres.py):
+- **[filtres.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/filtres.py)**:
 	Hi ha les funcions per aplicar els filtres, que cridem des de __main__grafGuay.py
 
-- out_Investors_orderedByNumberOfInvestments.txt
-	És un fitxer de sortida, que conté TOTS els Investors ordenats de més a menys Investments (inversions) fetes. Útil per a aplicar el filtre que filtra per inversor i veure quins inversors val la pena filtrar per generar resultats amb sentit.
+- _[out_Investors_orderedByNumberOfInvestments.txt](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/out_Investors_orderedByNumberOfInvestments.txt)_: És un fitxer de sortida, que conté TOTS els Investors ordenats de més a menys Investments (inversions) fetes. Útil per a aplicar el filtre que filtra per inversor i veure quins inversors val la pena filtrar per generar resultats amb sentit.
 
-- dic_nodePosicio_guardat.json --> guarda les posicions dels nodes per recuperar-les cada cop que corres
+- _[dic_nodePosicio_guardat.json](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/dic_nodePosicio_guardat.json)_: guarda les posicions dels nodes per recuperar-les cada cop que corres
 	l'script per al timelapse (que requereix un layout constant en totes les imatges). Si afegeixes files a l'excel probablement
 	es destarotarà tot. Si això passa senzillament esborra aquest document .json manualment!
 
-- ./timelapse_Time_Difference --> Carpeta on es guardaran els grafics time lapse quan es demani. OJO! No esborrar!!!!
+- _[timelapse_Time_Difference/](https://github.com/blackcub3s/networkGraph_dataVisualization/tree/main/timelapse_Time_Difference): Carpeta on es guardaran els grafics time lapse quan es demani. No esborrar-la!
 
 
 
