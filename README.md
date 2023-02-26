@@ -153,27 +153,37 @@ PAS 4 (opcional): si voleu crear timelapses (necessiteu guardar les imatges) cal
 definir el (ls) del grafic. Podeu fer un gràfic de 0 a 3 anys, per veure els inversors i les inversions que menys temps han tardat a fer inversions que es dupliquessin en valor.
 
 
-# EXPLICACIÓ DELS FITXERS I CARPETES UTILITZATS PEL PROGRAMA  __main__grafGuay.py: #
+# EXPLICACIÓ DE FITXERS I CARPETES:
 
+## PROGRAMES
 
 - **[SSS.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/SSS.py)**:
 	genera el graf a partir de l'excel (prenent els diferents Investor(s) i Investment(s), com a nodes; fent edges entre Investor(s) i 
 	Investment(s) i passant com a propietat de les edges els atributs "Forecast_Sell_Date"(data en que es van duplicar el valor de les accions després de comprar-les -o data prevista en que es farà-) i "Buy_Date" (data en que es van adquirir les accions).
 
 - **[__main__grafGuay.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/__main__grafGuay.py)**:
-	Construeix el graf i integra les funcions dels altres fitxers, permet modificar els paràmetres dels filtres. Té un filtre especial,
+	Construeix el graf i **integra les funcions dels altres fitxers**, permet modificar els paràmetres dels filtres. **És l'únic codi que cal executar per fer anar el programa, si no fem cap canvi a l'excel**. Té un filtre especial,
 	posat dins un while: que genera time lapses entre dues dates (una imatge per cada any que passa). Per accedir a cada filtre cal eliminar els comentaris fets amb cometes triples, tant per sota com per damunt. NOTA: No es poden usar filtres sobre filtres. Només es pot fer servir un tipus de filtre per cada gràfic fet.
 
 - **[filtres.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/filtres.py)**:
 	Hi ha les funcions per aplicar els filtres, que cridem des de __main__grafGuay.py
 
+- **[parseExcel.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/parseExcel.py)**: Aquest arxiu obre _1. fitxerInversions_inicial.xlsx_ i permet eliminar el grup "Investor:" de la columna del mateix nom, treure'n els espais per l'esquerra i la dreta[^1] i guardar la columna "Investor_parsejat" dins  "2. fitxerInversions_parsejatFinal.xlsx", que serà la que farà servir _SSS.py_.
+
+## FITXER D'ENTRADA
+- [1. fitxerInversions_inicial.xlsx](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/1.%20fitxerInversions_inicial.xlsx)
+    El fitxer on introduim les dades.
+
+- [2. fitxerInversions_parsejatFinal.xlsx](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/2.%20fitxerInversions_parsejatFinal.xlsx): El fitxer que es genera a partir de __1. fitxerInversions_inicial.xlsx__, i que no cal tocar per res (a més de ser un fitxer de sortida obtingut a partir de __1. fitxerInversions_inicial.xlsxtambé__ tamb
+e és un fitxer d'entrada per al codi).
+
+## FITXERS DE SORTIDA
+
 - _[out_Investors_orderedByNumberOfInvestments.txt](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/out_Investors_orderedByNumberOfInvestments.txt)_: És un fitxer de sortida, que conté TOTS els Investors ordenats de més a menys Investments (inversions) fetes. Útil per a aplicar el filtre que filtra per inversor i veure quins inversors val la pena filtrar per generar resultats amb sentit.
 
-- _[dic_nodePosicio_guardat.json](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/dic_nodePosicio_guardat.json)_: guarda les posicions dels nodes per recuperar-les cada cop que corres
-	l'script per al timelapse (que requereix un layout constant en totes les imatges). Si afegeixes files a l'excel probablement
-	es destarotarà tot. Si això passa senzillament esborra aquest document .json manualment!
+- _[dic_nodePosicio_guardat.json](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/dic_nodePosicio_guardat.json)_: guarda les posicions dels nodes per recuperar-les cada cop que corres l'script per al timelapse (que requereix un layout constant en totes les imatges). Si afegeixes files a l'excel probablement es destarotarà tot. Si això passa senzillament esborra aquest document _.json_ manualment!
 
-- _[timelapse_Time_Difference/](https://github.com/blackcub3s/networkGraph_dataVisualization/tree/main/timelapse_Time_Difference): Carpeta on es guardaran els grafics time lapse quan es demani. No esborrar-la!
+- _[timelapse_Time_Difference/](https://github.com/blackcub3s/networkGraph_dataVisualization/tree/main/timelapse_Time_Difference)_: Carpeta on es guardaran els grafics time lapse quan es demani. No esborrar-la!
 
 
 
@@ -182,4 +192,8 @@ definir el (ls) del grafic. Podeu fer un gràfic de 0 a 3 anys, per veure els in
 Programa fet per @blackcub3s (Santi Sánchez Sans)
 Analista de dades amb python
 
-[def]: src_imgReadme/
+
+
+
+
+[^1]: Els espais ha calgut eliminar-los perquè el que feien en el fitxer proporcionat per l'empresa era que  __main__grafGuay.py mal funcionés i considerés el mateix inversor (un sol node) com si fossin diferents nodes o inversors.
