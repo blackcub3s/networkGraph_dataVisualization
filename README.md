@@ -27,7 +27,7 @@ La generació del fitxer de dades `1. fitxerInversions_inicial.xlsx` s'ha obting
 
 ## ON FER CANVIS EN LES DADES?
 
-Si heu fet canvis a `1. fitxerInversions_inicial` hey d'executar `parseExcel.py`que produirà un segon excel amb les dades depurades (excel que no heu de tocar: `2. fitxerInversions_parsejatFinal.xlsx`). És d'aquest excel d'on es prenen les dades per a executar el programa principal que produeix els gràfics `__main__grafGuay.py`. Més endavant us explico com fer servir el teu propi dataset.
+Si heu fet canvis a `1. fitxerInversions_inicial` heu d'executar `parseExcel.py`que produirà un segon excel amb les dades depurades (excel que no heu de tocar: `2. fitxerInversions_parsejatFinal.xlsx`). És d'aquest excel d'on es prenen les dades per a executar el programa principal que produeix els gràfics `__main__grafGuay.py`. Més endavant us explico com fer servir el teu propi dataset.
 
 # EXECUTAR EL PROGRAMA
 
@@ -160,7 +160,7 @@ definir el (ls) del grafic. Podeu fer un gràfic de 0 a 3 anys, per veure els in
 	genera el graf a partir de l'excel (prenent els diferents Investor(s) i Investment(s), com a nodes; fent edges entre Investor(s) i 
 	Investment(s) i passant com a propietat de les edges els atributs "Forecast_Sell_Date"(data en que es van duplicar el valor de les accions després de comprar-les -o data prevista en que es farà-) i "Buy_Date" (data en que es van adquirir les accions).
 
-- __main__grafGuay.py:
+- [__main__grafGuay.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/__main__grafGuay.py):
 	Construeix el graf i integra les funcions dels altres fitxers, permet modificar els paràmetres dels filtres. Té un filtre especial,
 	posat dins un while: que genera time lapses entre dues dates (una imatge per cada any que passa). Per accedir a cada filtre cal eliminar els comentaris fets amb cometes triples, tant per sota com per damunt. NOTA: No es poden usar filtres sobre filtres. Només es pot fer servir un tipus de filtre per cada gràfic fet.
 
