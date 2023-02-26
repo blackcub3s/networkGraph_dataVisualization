@@ -135,21 +135,21 @@ Per exemple, si trobeu que el valor més gran dins de Time_Difference és 21,342
 
 En cas que vulgueu fer servir aquesta eina amb el vostre propi dataset heu de fer servir una serie de passos i respetar unes normes, per tal de que el codi produeixi un graf com el que hem vist aquí. A continuació les teniu:
 
-PAS 1. Substituir l'excel "1. fitxerInversions_inicial" pel teu fitxer.
+- **PAS 1** Substituir l'excel "1. fitxerInversions_inicial" pel teu fitxer.
 
-PAS 2. Caldrà que parsejis la columna "Investor" fent que hi hagi dos punts entre "investor" i la informació real del "Investment". 
+- **PAS 2** Caldrà que parsejis la columna "Investor" fent que hi hagi dos punts entre "investor" i la informació real del "Investment". 
 Un cop fet això necessitaràs una nova columna anomenada "Investor_parsejat", sense espais per davant ni darrera a cada cel·la. Per fer-la pots fer servir l'arxiu "parseExcel.py" que te la generarà. Per tal d'aconseguir-ho executa'l un cop hagis fet canvis a 
 "1. fitxerInversions_inicial.xlsx", cosa que et generarà una versió actualitzada de "2. Investor_parsejat.xlsx" amb la nova columna que necessites. 
 
-    PAS 2.1 Assegura't que NO existeix cap cel·la de la columna "Investor_parsejat" que sigui exactament igual a qualsevol cel·la de la columna "Investment". Si això passés, els strings que defineixen aquestes cel·les acabarien definint un sol node al graf G i aleshores només es representarien com un punt quan haurien de sortir com a punts separats.
+    · **PAS 2.1** Assegura't que NO existeix cap cel·la de la columna "Investor_parsejat" que sigui exactament igual a qualsevol cel·la de la columna "Investment". Si això passés, els strings que defineixen aquestes cel·les acabarien definint un sol node al graf G i aleshores només es representarien com un punt quan haurien de sortir com a punts separats.
 		
-    PAS 2.2 Assegura't també que NO HI HA CEL·LES BUIDES a Investor i Investment. Si n'hi han es canvien per NaN i tots els NaN networkx els interpreta com un sol node.
+    · **PAS 2.2** Assegura't també que NO HI HA CEL·LES BUIDES a Investor i Investment. Si n'hi han es canvien per NaN i tots els NaN networkx els interpreta com un sol node.
 
 
-PAS 3. interpretar arxiu __main__grafGuay.py. Per definir els filtres cal anar a la part de baix de tot el document, fins "if __name__ == "__main__". Hi ha diverses crides de la funció crea_grafic(), que es on es defineixen els filtres o l'absència dels mateixos en funció dels
+- **PAS 3** interpretar arxiu __main__grafGuay.py. Per definir els filtres cal anar a la part de baix de tot el document, fins "if __name__ == "__main__". Hi ha diverses crides de la funció crea_grafic(), que es on es defineixen els filtres o l'absència dels mateixos en funció dels
 paràmetres que hi entren. Existeixen regles concretes per emplenar aquests paràmetres: per saber-les veure el docstring de la funció crea_grafic(). Cal que hi hagi una sola crida a la funció cada vegada, mantingues les altres comentades. 
 
-PAS 4 (opcional): si voleu crear timelapses (necessiteu guardar les imatges) cal baixar el paquet fent `pip install -U kaleido`. Definiu el limit inferior (li) i superior i correu el gràfic. Presteu atenció al print en pantalla que indica quin es el temps més gran que a un inversor ha dut duplicar la seva inversió a la columna Time_Difference Podreu fer-lo servir per
+- **PAS 4 (opcional)**: si voleu crear timelapses (necessiteu guardar les imatges) cal baixar el paquet fent `pip install -U kaleido`. Definiu el limit inferior (li) i superior i correu el gràfic. Presteu atenció al print en pantalla que indica quin es el temps més gran que a un inversor ha dut duplicar la seva inversió a la columna Time_Difference Podreu fer-lo servir per
 definir el (ls) del grafic. Podeu fer un gràfic de 0 a 3 anys, per veure els inversors i les inversions que menys temps han tardat a fer inversions que es dupliquessin en valor.
 
 
@@ -174,8 +174,7 @@ definir el (ls) del grafic. Podeu fer un gràfic de 0 a 3 anys, per veure els in
 - [1. fitxerInversions_inicial.xlsx](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/1.%20fitxerInversions_inicial.xlsx)
     El fitxer on introduim les dades.
 
-- [2. fitxerInversions_parsejatFinal.xlsx](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/2.%20fitxerInversions_parsejatFinal.xlsx): El fitxer que es genera a partir de __1. fitxerInversions_inicial.xlsx__, i que no cal tocar per res (a més de ser un fitxer de sortida obtingut a partir de __1. fitxerInversions_inicial.xlsxtambé__ tamb
-e és un fitxer d'entrada per al codi).
+- [2. fitxerInversions_parsejatFinal.xlsx](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/2.%20fitxerInversions_parsejatFinal.xlsx): El fitxer que es genera a partir de __1. fitxerInversions_inicial.xlsx__, i que no cal tocar per res (a més de ser un fitxer de sortida obtingut a partir de __1. fitxerInversions_inicial.xlsx__ també és un fitxer d'entrada per al codi).
 
 ## FITXERS DE SORTIDA
 
@@ -189,7 +188,8 @@ e és un fitxer d'entrada per al codi).
 
 # AUTORIA
 
-Programa fet per @blackcub3s (Santi Sánchez Sans)
+Programa fet per [@blackcub3s](https://www.instagram.com/blackcub3s/)  (Santi Sánchez Sans)
+Linkedin: 
 Analista de dades amb python
 
 
