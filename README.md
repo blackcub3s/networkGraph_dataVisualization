@@ -190,7 +190,7 @@ definir el (ls) del grafic. Podeu fer un gràfic de 0 a 3 anys, per veure els in
 
 ### Decisions de programació per fitxers
 
-#### **__main__grafGuay.py** i **SSS.py**
+#### [__main__grafGuay.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/__main__grafGuay.py)**
 
 Dins d'aquest fitxer he programat diverses funcions que considero interessants d'especificar. La primera funció interessant a comentar és  `informaRepetits()`. Aquesta funció emana de la problemàtica que generaren les últimes dues línies de codi del fitxer **SSS.py**, on els nodes d'investor i investment s'afegeixen en una mateixa llista per tenir-los a mà fàcilment però alhora s'afegeixen al graf a les línies 25 i 26:
 
