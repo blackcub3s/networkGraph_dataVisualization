@@ -7,7 +7,7 @@ import networkx as nx
 import time
 
 # Load the Excel file
-Investment_predictions = pd.read_excel("2. fitxerInversions_parsejatFinal.xlsx")
+InvestorsData = pd.read_excel("2. fitxerInversions_parsejatFinal.xlsx")
 
 # -----------------------------------------------------------------------------------------------------
 
@@ -21,14 +21,14 @@ def creaGraf():
     #Crea la llista que farem servir al proper document (essencial per poder ajustar l'argument de paritat del proper document)
     ll_investmentInvestor = []
     # Add nodes to the graph
-    for index, row in Investment_predictions.iterrows():       
+    for index, row in InvestorsData.iterrows():       
         G.add_node(row["Investment"])               #Forecast_Sell_Date=row["Forecast_Sell_Date"])        
         G.add_node(row["Investor_Parsejat"])        
         ll_investmentInvestor += [row["Investment"]]
         ll_investmentInvestor += [row["Investor_Parsejat"]]
 
     # Add edges to the graph
-    for index, row in Investment_predictions.iterrows():
+    for index, row in InvestorsData.iterrows():
         G.add_edge(row["Investment"], row["Investor_Parsejat"],Forecast_Sell_Date=row["Forecast_Sell_Date"], Buy_Date=row["Buy_Date"], Time_Difference=row["Time_Difference"]) #, Forecast_Sell_Date=row["Forecast_Sell_Date"], Time_Difference=row["Time_Difference"], sentence=row["Sentence"])
 
     # Print some information about the graph
@@ -39,8 +39,8 @@ def creaGraf():
 
     # -----------------------------------------------------------------------------------------------------
 
-    minMax_Forecast_Sell_Date = (Investment_predictions["Forecast_Sell_Date"].min(), Investment_predictions["Forecast_Sell_Date"].max())
+    minMax_Forecast_Sell_Date = (InvestorsData["Forecast_Sell_Date"].min(), InvestorsData["Forecast_Sell_Date"].max())
 
     # Get the node positions
     dic_nodePosicio = nx.spring_layout(G) #ES UN DICCIONARI "NODE" : "array([-0.13076184,  0.43108399]". Cal desempaquetar-ho"
-    return G, dic_nodePosicio, ll_investmentInvestor, Investment_predictions["Investor_Parsejat"], Investment_predictions["Time_Difference"], minMax_Forecast_Sell_Date
+    return G, dic_nodePosicio, ll_investmentInvestor, InvestorsData["Investor_Parsejat"], InvestorsData["Time_Difference"], minMax_Forecast_Sell_Date
