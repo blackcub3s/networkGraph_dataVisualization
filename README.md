@@ -157,34 +157,6 @@ definir el (ls) del grafic. Podeu fer un gràfic de 0 a 3 anys, per veure els in
 
 # PROGRAMES I FITXERS:
 
-## PROGRAMES
-
-- **[SSS.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/SSS.py)**:
-	genera el graf a partir de l'excel __2. fitxerInversions_parsejatFinal.xlsx__ (prenent els diferents Investor(s) i Investment(s), com a nodes; fent edges entre Investor(s) i Investment(s) i passant com a propietat de les edges els atributs "Forecast_Sell_Date"(data en que es van duplicar el valor de les accions després de comprar-les -o data prevista en que es farà-) i "Buy_Date" (data en que es van adquirir les accions).
-
-- **[__main__grafGuay.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/__main__grafGuay.py)**:
-	Construeix el graf i **integra les funcions dels altres fitxers**, permet modificar els paràmetres dels filtres. **És l'únic codi que cal executar per fer anar el programa, si no fem cap canvi a l'excel**. Té un filtre especial,
-	posat dins un while: que genera time lapses entre dues dates (una imatge per cada any que passa). Per accedir a cada filtre cal eliminar els comentaris fets amb cometes triples, tant per sota com per damunt. 
-
-    Dins d'aquest fitxer he programat diverses funcions que considero interessants d'especificar. La primera funció interessant a comentar és  `informaRepetits()`. Aquesta funció emana de la problemàtica que generaren les últimes dues línies de codi del fitxer **SSS.py**, on els nodes d'investor i investment s'afegeixen en una mateixa llista per tenir-los a mà fàcilment però alhora s'afegeixen al graf a les línies 25 i 26:
-
-    https://github.com/blackcub3s/networkGraph_dataVisualization/blob/71eed338d8e981c9b5be0ffd5e19784a8872bb12/SSS.py#L24-L28
-
-    El problema és que un cop s'han introduit al graf tots formen part dels nodes del graf i són indistingibles, ja que no existeix una forma de separar-los (cosa indispensable, perquè cada un d'ells requereix anotacions diferents i se'n requereix saber la naturalesa -inversor o inversió-). Inicialment l'argument per trobar quin era quin era senzill: en recorrer `G.adjacency()` si s'ha afegit en una posició parell el node hauria de ser un inversor i si era senar era una inversió (ja que s'han anat afegint en ordre com veiem a les línies 2a i 3a de l'anteterior bloc de codi). El que passava és que aquesta assumpció no era correcta: per exemple, si existien inversions que es repetien en diverses files de l'excel (i.e. múltiples inversors que han invertit en una mateixa companyia) els nodes repetits s'eliminen internament, ja que networkx implementa una estructura de dades per representar el graf que és una espècie de conjunt on no poden haver dos nodes que es diguin igual. Això generava la necessitat de tenir en compte constants canvis de paritat en l'argument que hem fet abans, per tenir en compte la eliminació de nodes repetits. Per tal de solventar-ho vaig fer la funció `informaRepetits()` que ens informava per a la llista `ll_investmentInvestor` (que obteniem del fitxer **SSS.py** i la passàvem al fitxer **__main__grafGuay.py**) en quins punts de la llista hi havia elements repetits, cosa que ens informaria indirectament dels canvis de paritat que es produien en afegir els nodes al graf:
-
-    https://github.com/blackcub3s/networkGraph_dataVisualization/blob/acbb0c9c35ac9c433adb73c6fbc0baef6277a6c8/__main__grafGuay.py#L62-L97
-
-    La funció `informaRepetits` ens retornava un conjunt (un set) anomenat `set_indexos_canvis_paritat` que conté els indexos dins del graf `G` en els quals es produirien internament aquests canvis de paritat per eliminar o evitar afegir els nodes repetits i, aleshores, sí que era factible aplicar l'argument de paritat per classificar cada node dins del graf en inversor o inversió (vegeu linia 291 on carreguem `set_indexos_canvis_paritat` des de la funció on l'hem obtingut i, després, de la línia 303 a la 308 on apliquem l'argument de paritat ajustat per eliminats):
-
-    https://github.com/blackcub3s/networkGraph_dataVisualization/blob/acbb0c9c35ac9c433adb73c6fbc0baef6277a6c8/__main__grafGuay.py#L289-L311
-
-    És clar que tot hagués sigut més senzill si haguessim pogut fixar les propietats corresponents mentre ho afegiem al graf. Però no va ser possible a partir del fitxer de codi que ens proporcionava l'empresa i la naturalesa de la llibreria.
-
-- **[filtres.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/filtres.py)**:
-	Hi ha les funcions per aplicar els filtres, que cridem des de __main__grafGuay.py
-
-- **[parseExcel.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/parseExcel.py)**: Aquest arxiu obre _1. fitxerInversions_inicial.xlsx_ i permet eliminar el grup "Investor:" de la columna del mateix nom, treure'n els espais per l'esquerra i la dreta[^1] i guardar la columna "Investor_parsejat" dins  "2. fitxerInversions_parsejatFinal.xlsx", que serà la que farà servir _SSS.py_.
-
 ## FITXERS D'ENTRADA
 - [1. fitxerInversions_inicial.xlsx](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/1.%20fitxerInversions_inicial.xlsx)
     El fitxer on introduim les dades.
@@ -198,6 +170,42 @@ definir el (ls) del grafic. Podeu fer un gràfic de 0 a 3 anys, per veure els in
 - _[dic_nodePosicio_guardat.json](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/dic_nodePosicio_guardat.json)_: guarda les posicions dels nodes per recuperar-les cada cop que corres l'script per al timelapse (que requereix un layout constant en totes les imatges). Si afegeixes files a l'excel probablement es destarotarà tot. Si això passa senzillament esborra aquest document _.json_ manualment!
 
 - _[timelapse_Time_Difference/](https://github.com/blackcub3s/networkGraph_dataVisualization/tree/main/timelapse_Time_Difference)_: Carpeta on es guardaran els grafics time lapse quan es demani. No esborrar-la!
+
+
+## PROGRAMES
+
+### Llistat d'scripts
+
+- **[SSS.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/SSS.py)**:
+	genera el graf a partir de l'excel __2. fitxerInversions_parsejatFinal.xlsx__ (prenent els diferents Investor(s) i Investment(s), com a nodes; fent edges entre Investor(s) i Investment(s) i passant com a propietat de les edges els atributs "Forecast_Sell_Date"(data en que es van duplicar el valor de les accions després de comprar-les -o data prevista en que es farà-) i "Buy_Date" (data en que es van adquirir les accions).
+
+- **[__main__grafGuay.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/__main__grafGuay.py)**:
+	Construeix el graf i **integra les funcions dels altres fitxers**, permet modificar els paràmetres dels filtres. **És l'únic codi que cal executar per fer anar el programa, si no fem cap canvi a l'excel**. Té un filtre especial,
+	posat dins un while: que genera time lapses entre dues dates (una imatge per cada any que passa). Per accedir a cada filtre cal eliminar els comentaris fets amb cometes triples, tant per sota com per damunt. 
+
+- **[filtres.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/filtres.py)**:
+	Hi ha les funcions per aplicar els filtres, que cridem des de __main__grafGuay.py
+
+- **[parseExcel.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/parseExcel.py)**: Aquest arxiu obre _1. fitxerInversions_inicial.xlsx_ i permet eliminar el grup "Investor:" de la columna del mateix nom, treure'n els espais per l'esquerra i la dreta[^1] i guardar la columna "Investor_parsejat" dins  "2. fitxerInversions_parsejatFinal.xlsx", que serà la que farà servir _SSS.py_.
+
+### Decisions de programació per fitxers
+
+#### **__main__grafGuay.py** i **SSS.py**
+
+Dins d'aquest fitxer he programat diverses funcions que considero interessants d'especificar. La primera funció interessant a comentar és  `informaRepetits()`. Aquesta funció emana de la problemàtica que generaren les últimes dues línies de codi del fitxer **SSS.py**, on els nodes d'investor i investment s'afegeixen en una mateixa llista per tenir-los a mà fàcilment però alhora s'afegeixen al graf a les línies 25 i 26:
+
+https://github.com/blackcub3s/networkGraph_dataVisualization/blob/71eed338d8e981c9b5be0ffd5e19784a8872bb12/SSS.py#L24-L28
+
+El problema és que un cop s'han introduit al graf tots formen part dels nodes del graf i són indistingibles, ja que no existeix una forma de separar-los (cosa indispensable, perquè cada un d'ells requereix anotacions diferents i se'n requereix saber la naturalesa -inversor o inversió-). Inicialment l'argument per trobar quin era quin era senzill: en recorrer `G.adjacency()` si s'ha afegit en una posició parell el node hauria de ser un inversor i si era senar era una inversió (ja que s'han anat afegint en ordre com veiem a les línies 2a i 3a de l'anteterior bloc de codi). El que passava és que aquesta assumpció no era correcta: per exemple, si existien inversions que es repetien en diverses files de l'excel (i.e. múltiples inversors que han invertit en una mateixa companyia) els nodes repetits s'eliminen internament, ja que networkx implementa una estructura de dades per representar el graf que és una espècie de conjunt on no poden haver dos nodes que es diguin igual. Això generava la necessitat de tenir en compte constants canvis de paritat en l'argument que hem fet abans, per tenir en compte la eliminació de nodes repetits. Per tal de solventar-ho vaig fer la funció `informaRepetits()` que ens informava per a la llista `ll_investmentInvestor` (que obteniem del fitxer **SSS.py** i la passàvem al fitxer **__main__grafGuay.py**) en quins punts de la llista hi havia elements repetits, cosa que ens informaria indirectament dels canvis de paritat que es produien en afegir els nodes al graf:
+
+https://github.com/blackcub3s/networkGraph_dataVisualization/blob/acbb0c9c35ac9c433adb73c6fbc0baef6277a6c8/__main__grafGuay.py#L62-L97
+
+La funció `informaRepetits` ens retornava un conjunt (un set) anomenat `set_indexos_canvis_paritat` que conté els indexos dins del graf `G` en els quals es produirien internament aquests canvis de paritat per eliminar o evitar afegir els nodes repetits i, aleshores, sí que era factible aplicar l'argument de paritat per classificar cada node dins del graf en inversor o inversió (vegeu linia 291 on carreguem `set_indexos_canvis_paritat` des de la funció on l'hem obtingut i, després, de la línia 303 a la 308 on apliquem l'argument de paritat ajustat per eliminats):
+
+https://github.com/blackcub3s/networkGraph_dataVisualization/blob/acbb0c9c35ac9c433adb73c6fbc0baef6277a6c8/__main__grafGuay.py#L289-L311
+
+És clar que tot hagués sigut més senzill si haguessim pogut fixar les propietats corresponents mentre ho afegiem al graf. Però no va ser possible a partir del fitxer de codi que ens proporcionava l'empresa i la naturalesa de la llibreria.
+
 
 
 
