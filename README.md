@@ -68,9 +68,9 @@ El Graf és interactiu, i podem veure propietats dels nodes: és a dir, el nom d
 ![gifGrafSenseFiltre](src_imgReadme/Video_NodesArestes_NOFILTER.gif)
 
 ### 2. Amb filtre
-Tenim 4 filtres possibles, que anirem desgranant en els apartats _2.1_ a _2.4_. Per a aplicar-los hem de deixar el paràmetre booleà `fesFiltre` en `True` i anar a definir la resta de paràmetres `tipusFiltre`i `informacioFiltre`. Noteu que aquests filtres s'apliquen de forma independent (i.e. no pots aplicar dos filtres a l'hora, o dos filtres en sèrie).
+Tenim 4 filtres possibles, que anirem desgranant en els apartats _2.1_ a _2.4_, respectivament. Per a aplicar-los hem de deixar el paràmetre booleà `fesFiltre` en `True` i anar a definir la resta de paràmetres `tipusFiltre`i `informacioFiltre`.[^2] 
 
-Per exemple, per a executar qualsevol dels quatre filtres hem d'assegurar-nos que el codi que mostro en aquest readme per al filtre queda descomentat dins de `if __name__ == "__main__":` (fitxer **[__main__grafGuay.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/__main__grafGuay.py)**):
+Per exemple, per a executar qualsevol dels quatre filtres hem d'assegurar-nos que el codi corresponent a cada filtre queda descomentat dins de `if __name__ == "__main__":` i que tota la resta de filtres estan comentats (veure fitxer **[__main__grafGuay.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/__main__grafGuay.py)** on apareix només descomentat la crida a la funció `crea_grafic()` que no produeix cap filtre).
 
 
 #### 2.1 filtre per intervalForecast_Sell_Date
@@ -198,3 +198,5 @@ Programa fet per Santiago Sánchez Sans, Analista de dades amb Python. Podeu con
 
 
 [^1]: Els espais ha calgut eliminar-los perquè el que feien en el fitxer proporcionat per l'empresa era que  __main__grafGuay.py mal funcionés i considerés el mateix inversor (un sol node) com si fossin diferents nodes o inversors.
+
+[^2]: Noteu que aquests filtres s'apliquen de forma independent (i.e. no pots aplicar dos filtres a l'hora, o dos filtres en sèrie).
