@@ -5,8 +5,8 @@
 ###########################################################################
 NOTA: LLEGIU EL readme.txt                                                #
                                                                           #
-PRESTEU MOLTÍSSIMA ATENCIÓ A PAS 2.1 I PAS 2.2 PER TENIR CLAR             #
-EL FORMAT QUE HAN DE TENIR LES COLUMNES Investor_Parsejat i Investment   #
+PRESTEU MOLTÍSSIMA ATENCIÓ                                                #
+EL FORMAT QUE HAN DE TENIR LES COLUMNES Investor_Parsejat i Investment    #
 ###########################################################################
 """
 
