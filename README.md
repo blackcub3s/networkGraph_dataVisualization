@@ -80,7 +80,7 @@ crea_grafic(fesFiltre = True,
             tipusFiltre="intervalForecast_Sell_Date", 
             informacioFiltre=[2015,2020])  #la llista que passem a informacioFiltre conté limit inferior i limit superior, respectivament. Si vols trobar inversors que podrien duplicar la seva inversió en un sol any en concret, fes que conicideixin els limits.
 ```
-El resultat del filtre anterior és aquest i mostra els inversors per als quals les inversions que han fet se'ls han duplicat en valor entre el 2015 i el 2020 (ambdós inclosos):
+El resultat del filtre anterior és aquest i mostra els inversors que han duplicat el seu valor per a alguna inversió donada i les inversions per a les quals això ha passat entre els anys 2015 i 2020 (ambdós inclosos):
 
 ![imatgeFiltrePerForecastSellDate](src_imgReadme/video_ForecastSellDate.gif)
 
@@ -92,7 +92,7 @@ crea_grafic(fesFiltre = True,
             tipusFiltre="Investor", 
             informacioFiltre=["Elon Musk", "John Paulson", "George Soros"]) #Si tipusFiltre == ["George Soros"], només veuràs les inversions de Soros.
 ```
-I el resultat:
+I el resultat d'aquesta crida a la funció `crea_grafic()` amb els paràmetres aquí especificats és aquest:
 
 ![filtre_perInversor](src_imgReadme/video_filterByInversor.gif)
 
