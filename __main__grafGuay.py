@@ -64,7 +64,7 @@ def informaRepetits(ll_investmentInvestor,imprimir):
     DESCRIPCIO_ Ens permet corregir el problema de paritat que es dóna en desapareixer els elements de l'excel un cop passats al graf G. 
     Absolutament essencial perquè les descripcions de Investor i Investment no es mesclin al graf.
     PRE:  ll_investmentInvestor <--      (variable global) : es la llista que conté les columnes "Investment i Investor_Parsejat" de l'excel processades 
-        de FORMA ALTERNA i indexades desde zero (i.e [fila1_columnaInvestment, fila1_columnaInvestor, f2_cBT, f2_cBO, f3_cBT, f3_cBO, [...], filaN_columnaInvestment, 
+        de FORMA ALTERNA i indexades desde zero (i.e [fila1_columnaInvestment, fila1_columnaInvestor, f2_cINVST, f2_cINVR, f3_cINVST, f3_cINVR, [...], filaN_columnaInvestment, 
         filaN_columnaInvestor]). A aquesta extracció l'anomerament la col·lecció d'elements excel. Noteu que ll_noms_dels_nodes conté aquesta col·lecció, 
         respectant-ne l'ordre, però amb els noms dels repetits eliminats. El problema d'això és que ens trenca l'argument de paritat, que ens ajuda a 
         decidir si un node és Investor o Investment, per tal de poder fer la llegenda hoverable del gràfic.

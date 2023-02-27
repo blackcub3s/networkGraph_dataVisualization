@@ -192,29 +192,28 @@ definir el (ls) del grafic. Podeu fer un gràfic de 0 a 3 anys, per veure els in
 
 #### [__main__grafGuay.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/__main__grafGuay.py)**
 
-Dins d'aquest fitxer he programat diverses funcions que considero interessants d'especificar. La primera funció interessant a comentar és  `informaRepetits()`. Aquesta funció emana de la problemàtica que generaren les últimes dues línies de codi del fitxer **SSS.py**, on els nodes d'investor i investment s'afegeixen en una mateixa llista per tenir-los a mà fàcilment però alhora s'afegeixen al graf a les línies 25 i 26:
+Dins d'aquest fitxer he programat diverses funcions que considero interessants d'especificar. La primera funció interessant a comentar és  `informaRepetits()`. Aquesta funció emana de la problemàtica que es generà a **SSS.py**, on a les línies 25 i 26 els nodes d'investor i investment s'afegeixen al graf `G` de networkX i, alhora, en una llista per tenir-los a mà fàcilment a les línies 27 i 28:
 
 https://github.com/blackcub3s/networkGraph_dataVisualization/blob/71eed338d8e981c9b5be0ffd5e19784a8872bb12/SSS.py#L24-L28
 
-El problema és que un cop s'han introduit al graf tots formen part dels nodes del graf i són indistingibles, ja que no existeix una forma de separar-los (cosa indispensable, perquè cada un d'ells requereix anotacions diferents i se'n requereix saber la naturalesa -inversor o inversió-). Inicialment l'argument per trobar quin era quin era senzill: en recorrer `G.adjacency()` si s'ha afegit en una posició parell el node hauria de ser un inversor i si era senar era una inversió (ja que s'han anat afegint en ordre com veiem a les línies 2a i 3a de l'anteterior bloc de codi). El que passava és que aquesta assumpció no era correcta: per exemple, si existien inversions que es repetien en diverses files de l'excel (i.e. múltiples inversors que han invertit en una mateixa companyia) els nodes repetits s'eliminen internament, ja que networkx implementa una estructura de dades per representar el graf que és una espècie de conjunt on no poden haver dos nodes que es diguin igual. Això generava la necessitat de tenir en compte constants canvis de paritat en l'argument que hem fet abans, per tenir en compte la eliminació de nodes repetits. Per tal de solventar-ho vaig fer la funció `informaRepetits()` que ens informava per a la llista `ll_investmentInvestor` (que obteniem del fitxer **SSS.py** i la passàvem al fitxer **__main__grafGuay.py**) en quins punts de la llista hi havia elements repetits, cosa que ens informaria indirectament dels canvis de paritat que es produien en afegir els nodes al graf:
+El problema és que un cop s'han introduit al graf els nodes de tipus inversor i de tipus inversió passen a formar part d'un tot homogeni i són indistingibles, ja que no existeix una forma de separar-los (cosa indispensable, perquè cada un d'ells requereix anotacions diferents i se'n requereix saber la naturalesa -inversor o inversió-). Inicialment, l'argument per trobar quin era quin era senzill: en recórrer `G.adjacency()` si un node s'ha afegit en una posició parell, hauria de ser un inversor; pel contrari, si s'ha afegit en una posició senar era una inversió (ja que s'han anat afegint en ordre com veiem a les línies 2a i 3a de l'anteterior bloc de codi). El que passava és que aquesta assumpció no era correcta: per exemple, si existien inversions que es repetien en diverses files de l'excel (i.e. múltiples inversors que han invertit en una mateixa companyia o inversió) els nodes repetits s'eliminaven internament, ja que networkx implementa una estructura de dades per representar el graf que és una espècie de conjunt on no poden haver dos nodes que tinguin el mateix nom. Això va generar la necessitat de tenir en compte constants canvis de paritat en l'argument que hem fet abans, per rastrejar els canvis que produeixen en la paritat a mesura que ens movem pel graf la existència de nodes que han sigut eliminats. Per tal de solventar-ho vaig fer la funció `informaRepetits()` que ens informava per a la llista `ll_investmentInvestor` (que obteniem del fitxer **SSS.py** i la passàvem al fitxer **__main__grafGuay.py**) en quins punts de la llista hi havia elements repetits, cosa que diria indirectament els canvis de paritat que es produien en afegir els nodes al graf:
 
 https://github.com/blackcub3s/networkGraph_dataVisualization/blob/acbb0c9c35ac9c433adb73c6fbc0baef6277a6c8/__main__grafGuay.py#L62-L97
 
-La funció `informaRepetits` ens retornava un conjunt (un set) anomenat `set_indexos_canvis_paritat` que conté els indexos dins del graf `G` en els quals es produirien internament aquests canvis de paritat per eliminar o evitar afegir els nodes repetits i, aleshores, sí que era factible aplicar l'argument de paritat per classificar cada node dins del graf en inversor o inversió (vegeu linia 291 on carreguem `set_indexos_canvis_paritat` des de la funció on l'hem obtingut i, després, de la línia 303 a la 308 on apliquem l'argument de paritat ajustat per eliminats):
+La funció `informaRepetits` ens retorna un conjunt (un set) anomenat `set_indexos_canvis_paritat` que conté els indexos dins del graf `G` en els quals es produirien internament aquests canvis de paritat per eliminar o evitar afegir els nodes repetits. Fet això, esdevenia factible aplicar l'argument de paritat per classificar cada node dins del graf en inversor o inversió (vegeu linia 291 on carreguem `set_indexos_canvis_paritat` des de la funció on l'hem obtingut i, després, de la línia 303 a la 308 on apliquem l'argument de paritat ajustat per eliminats):
 
 https://github.com/blackcub3s/networkGraph_dataVisualization/blob/acbb0c9c35ac9c433adb73c6fbc0baef6277a6c8/__main__grafGuay.py#L289-L311
 
 És clar que tot hagués sigut més senzill si haguessim pogut fixar les propietats corresponents mentre ho afegiem al graf. Però no va ser possible a partir del fitxer de codi que ens proporcionava l'empresa i la naturalesa de la llibreria.
 
 
-
-
-# AUTORIA i DADES DE CONTACTE
+# AUTORIA I DADES DE CONTACTE
 
 Programa fet per Santiago Sánchez Sans, Analista de dades amb Python. Podeu contactar-me a:
 
 - Instagram: [@blackcub3s](https://www.instagram.com/blackcub3s/)
 - Linkedin: [Santiago Sánchez Sans](https://www.linkedin.com/in/santiago-s%C3%A1nchez-sans-451b53127/) 
+
 
 
 
