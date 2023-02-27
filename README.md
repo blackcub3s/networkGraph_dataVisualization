@@ -155,7 +155,7 @@ paràmetres que hi entren. Existeixen regles concretes per emplenar aquests par�
 definir el (ls) del grafic. Podeu fer un gràfic de 0 a 3 anys, per veure els inversors i les inversions que menys temps han tardat a fer inversions que es dupliquessin en valor.
 
 
-# EXPLICACIÓ DE FITXERS I CARPETES:
+# PROGRAMES I FITXERS:
 
 ## PROGRAMES
 
@@ -164,14 +164,18 @@ definir el (ls) del grafic. Podeu fer un gràfic de 0 a 3 anys, per veure els in
 
 - **[__main__grafGuay.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/__main__grafGuay.py)**:
 	Construeix el graf i **integra les funcions dels altres fitxers**, permet modificar els paràmetres dels filtres. **És l'únic codi que cal executar per fer anar el programa, si no fem cap canvi a l'excel**. Té un filtre especial,
-	posat dins un while: que genera time lapses entre dues dates (una imatge per cada any que passa). Per accedir a cada filtre cal eliminar els comentaris fets amb cometes triples, tant per sota com per damunt. NOTA: No es poden usar filtres sobre filtres. Només es pot fer servir un tipus de filtre per cada gràfic fet.
+	posat dins un while: que genera time lapses entre dues dates (una imatge per cada any que passa). Per accedir a cada filtre cal eliminar els comentaris fets amb cometes triples, tant per sota com per damunt. 
+
+    Dins d'aquest fitxer he programat diverses funcions que considero interessants d'especificar:
+
+    https://github.com/blackcub3s/networkGraph_dataVisualization/blob/acbb0c9c35ac9c433adb73c6fbc0baef6277a6c8/__main__grafGuay.py#L62-L97
 
 - **[filtres.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/filtres.py)**:
 	Hi ha les funcions per aplicar els filtres, que cridem des de __main__grafGuay.py
 
 - **[parseExcel.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/parseExcel.py)**: Aquest arxiu obre _1. fitxerInversions_inicial.xlsx_ i permet eliminar el grup "Investor:" de la columna del mateix nom, treure'n els espais per l'esquerra i la dreta[^1] i guardar la columna "Investor_parsejat" dins  "2. fitxerInversions_parsejatFinal.xlsx", que serà la que farà servir _SSS.py_.
 
-## FITXER D'ENTRADA
+## FITXERS D'ENTRADA
 - [1. fitxerInversions_inicial.xlsx](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/1.%20fitxerInversions_inicial.xlsx)
     El fitxer on introduim les dades.
 
