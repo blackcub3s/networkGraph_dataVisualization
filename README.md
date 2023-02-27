@@ -176,7 +176,7 @@ definir el (ls) del grafic. Podeu fer un gràfic de 0 a 3 anys, per veure els in
 
     La funció `informaRepetits` ens retornava un conjunt (un set) anomenat `set_indexos_canvis_paritat` que conté els indexos dins del graf `G` en els quals es produirien internament aquests canvis de paritat per eliminar o evitar afegir els nodes repetits i, aleshores, sí que era factible aplicar l'argument de paritat per classificar cada node dins del graf en inversor o inversió (vegeu linia 291 on carreguem `set_indexos_canvis_paritat` des de la funció on l'hem obtingut i, després, de la línia 303 a la 308 on apliquem l'argument de paritat ajustat per eliminats):
 
-    https://github.com/blackcub3s/networkGraph_dataVisualization/blob/acbb0c9c35ac9c433adb73c6fbc0baef6277a6c8/__main__grafGuay.py#L290-311
+    https://github.com/blackcub3s/networkGraph_dataVisualization/blob/acbb0c9c35ac9c433adb73c6fbc0baef6277a6c8/__main__grafGuay.py#L289-L311
 
     És clar que tot hagués sigut més senzill si haguessim pogut fixar les propietats corresponents mentre ho afegiem al graf. Però no va ser possible a partir del fitxer de codi que ens proporcionava l'empresa i la naturalesa de la llibreria.
 
