@@ -35,7 +35,7 @@ Si heu fet canvis a `1. fitxerInversions_inicial` heu d'executar `parseExcel.py`
 
 Un cop tingueu l'excel llest `1. fitxerInversions_inicial` i tingueu `2. fitxerInversions_parsejatFinal.xlsx` generats (que al repositori ja ho estan) heu d'executar `__main__grafGuay.py`.
 
-En executar el programa `__main__grafGuay.py` veureu que hi ha **5 maneres** possibles d'utilitzar-lo. Cada una d'aquestes maneres és un filtre que genera visualment un graf d'un subconjunt de dades escollit. Cada un d'aquests filtres es pot aplicar executant el frament de codi adient anant dins de  ```python "if __name__ == "__main__":```
+En executar el programa `__main__grafGuay.py` veureu que hi ha **5 maneres** possibles d'utilitzar-lo. Cada una d'aquestes maneres és un filtre que genera visualment un graf d'un subconjunt de dades escollit. Cada un d'aquests filtres es pot aplicar executant el frament de codi adient anant dins de  `"if __name__ == "__main__":`
 
 Noteu que tots els filtres estan comentats, menys el que no té filtre i que mostra totes les files que hi ha dins l'excel representades al graf (1. sense filtre). Per accedir a un dels 4 filtres que hi ha (de punts 2.1 a 2.4 de la llista següent) comenta tots els altres i deixa només com a codi llegible per l'intèrpret de python al filtre en questió escollit:
 
@@ -63,16 +63,16 @@ En aplicar aquesta crida a la funció, si el paràmetre fesFiltre està en False
 ![imatgeGrafSenseFiltre](src_imgReadme/SenseFiltre_noHover.png)
 
 
-El Graf és interactiu, i podem veure propietats dels nodes: és a dir, el nom dels inversors i de les empreses on inverteixen. En les arestes que uneixen inversors i inversons també robem més informació: sobre l'any de compra, l'any potencial de venta per duplicar la inversió i, finalment, el temps -exacte- que passa entre un moment i l'altre. Podeu veure-ho en el següent _.gif_:
+El Graf és interactiu, i podem veure propietats dels nodes: és a dir, el nom dels inversors i de les empreses on inverteixen. En les arestes que uneixen inversors i inversons també trobem més informació: sobre l'any de compra, l'any potencial de venta per duplicar la inversió i, finalment, el temps -exacte- que passa entre un moment i l'altre. Podeu veure-ho en el següent _.gif_:
 
 ![gifGrafSenseFiltre](src_imgReadme/Video_NodesArestes_NOFILTER.gif)
 
 ### 2. Amb filtre
-Tenim 4 filtres possibles, que anirem desgranant en els apartats _2.1_ a _2.4_. Per a aplicar-los hem de deixar el paràmetre booleà fesFiltre en True i anar a definir la resta de paràmetres `tipusFiltre`i `informacioFiltre`. Noteu que aquests filtres s'apliquen de forma independent (i.e. no pots aplicar dos filtres a l'hora, o dos filtres en sèrie).
+Tenim 4 filtres possibles, que anirem desgranant en els apartats _2.1_ a _2.4_. Per a aplicar-los hem de deixar el paràmetre booleà `fesFiltre` en `True` i anar a definir la resta de paràmetres `tipusFiltre`i `informacioFiltre`. Noteu que aquests filtres s'apliquen de forma independent (i.e. no pots aplicar dos filtres a l'hora, o dos filtres en sèrie).
 
 
 #### 2.1 filtre per intervalForecast_Sell_Date
-El que fa aquest filtre és poder generar un subconjunt d'aquelles inversions que s'han duplicat (i els inversors que les han fet) dins del període temporal definit pels anys enters definits pel límit inferior i superior de l'interval (i que són definits a informacioFiltre):
+El que fa aquest filtre és poder generar un subconjunt d'aquelles inversions que s'han duplicat (i els inversors que les han fet) dins del període temporal definit pels anys enters definits pel límit inferior i superior de l'interval (i que són definits a informacioFiltre). Per exemple, per a executar-lo hem d'assegurar-nos que aquest codi queda descomentat dins de `if __name__ == "__main__":`:
 
 ```Python
 #EXEMPLE AMB FILTRE PER Forecast_Sell_Date (mirar un interval d'anys i veure quins inversors han duplicat el valor de les seves inversions)
@@ -80,7 +80,7 @@ crea_grafic(fesFiltre = True,
             tipusFiltre="intervalForecast_Sell_Date", 
             informacioFiltre=[2015,2020])  #la llista que passem a informacioFiltre conté limit inferior i limit superior, respectivament. Si vols trobar inversors que podrien duplicar la seva inversió en un sol any en concret, fes que conicideixin els limits.
 ```
-Per exemple, el resultat del filtre anterior és:
+El resultat del filtre anterior és aquest i mostra els inversors per als quals les inversions que han fet se'ls han duplicat en valor entre el 2015 i el 2020 (ambdós inclosos):
 
 ![imatgeFiltrePerForecastSellDate](src_imgReadme/video_ForecastSellDate.gif)
 
