@@ -72,7 +72,9 @@ Tenim 4 filtres possibles, que anirem desgranant en els apartats _2.1_ a _2.4_. 
 
 
 #### 2.1 filtre per intervalForecast_Sell_Date
-El que fa aquest filtre és poder generar un subconjunt d'aquelles inversions que s'han duplicat (i els inversors que les han fet) dins del període temporal definit pels anys enters definits pel límit inferior i superior de l'interval (i que són definits a informacioFiltre). Per exemple, per a executar-lo hem d'assegurar-nos que aquest codi queda descomentat dins de `if __name__ == "__main__":`:
+El que fa aquest filtre és poder generar un subconjunt d'aquelles inversions que s'han duplicat (i els inversors que les han fet) dins del període temporal definit pels anys enters definits pel límit inferior i superior de l'interval (i que són definits a informacioFiltre). Les inversions i inversors que no compleixen aquest requisit surten difuminats.
+
+Per exemple, per a executar-lo hem d'assegurar-nos que aquest codi queda descomentat dins de `if __name__ == "__main__":` (fitxer **[__main__grafGuay.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/__main__grafGuay.py)**):
 
 ```Python
 #EXEMPLE AMB FILTRE PER Forecast_Sell_Date (mirar un interval d'anys i veure quins inversors han duplicat el valor de les seves inversions)
@@ -80,7 +82,7 @@ crea_grafic(fesFiltre = True,
             tipusFiltre="intervalForecast_Sell_Date", 
             informacioFiltre=[2015,2020])  #la llista que passem a informacioFiltre conté limit inferior i limit superior, respectivament. Si vols trobar inversors que podrien duplicar la seva inversió en un sol any en concret, fes que conicideixin els limits.
 ```
-El resultat del filtre anterior és aquest i mostra els inversors que han duplicat el seu valor per a alguna inversió donada i les inversions per a les quals això ha passat entre els anys 2015 i 2020 (ambdós inclosos):
+El resultat del filtre anterior, que mostra els inversors i les inversions que han fet un x2, entre el 2015 i 2020 (ambdós inclosos) apareix a continuació.
 
 ![imatgeFiltrePerForecastSellDate](src_imgReadme/video_ForecastSellDate.gif)
 
