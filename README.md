@@ -7,7 +7,7 @@ En l'adaptació que he fet s'ha buscat una forma de reaprofitar el treball que v
 
 ## Teconologies utilitzades
 
-Per fer aquest projecte s'ha fet servir `Python`, com a llenguatge de programació i diverses llibreries disponibles per a aquest llenguatge: `plotly`, per fer la representació gràfica del graf; `Networkx`, per tal de representar internament el graf com un conjunt de nodes i d'arestes i passar-los certes propietats. També s'ha fet servir `JSON` per tal de guardar les coordenades de cada node en un dels filtres que té el programa en la primera crida a la funció crea_grafic i utilitzar-les per a les següents crides (per generar fotogrames de timelapses, com veurem a continuació, en executar el filtre `filtres.timelapse_Time_Difference(li = 1, ls = 20)` es cridava internament la funció `crea_grafic` diversos cops, i amb cada crida `layout` del graf canviava: la solució fou guardar les coordenades en la primera crida i reaprofitar-les a les següents).
+Per fer aquest projecte s'ha fet servir `Python`, com a llenguatge de programació i diverses llibreries disponibles per a aquest llenguatge: [][][`plotly`](https://plotly.com/python/), per fer la representació gràfica del graf; [`Networkx`](https://networkx.org/), per tal de representar internament el graf com un conjunt de nodes i d'arestes i passar-los certes propietats. També s'ha fet servir `JSON` per tal de guardar les coordenades de cada node  per successives crides de la funció que crea el gràfic.
 
 # DESCRIPCIÓ
   
@@ -15,10 +15,10 @@ Per fer aquest projecte s'ha fet servir `Python`, com a llenguatge de programaci
 
 Podeu obrir l'excel `1. fitxerInversions_inicial.xlsx` per veure les dades introduides. S'ha escollit fer un sistema per visualitzar inversors i les companyies en les quals aquests inverteixen, tot mostrant en quin moment aquestes inversions es dupliquen en valor (tenen un ROI del 100%).
     
-Per tal de fer aquesta representació s'ha introduit com a nodes en un graf tant diversos inversors de renom (columna `Investor`) i com a companyies aquelles a les quals aquests inversors pressumiblement han invertit (columna `Investment`). Una aresta entre un "Investor" i una "Investment" implica que va haver una operació de compra d'accions per part de l'inversor en aquella companyia. Si us situeu damunt l'aresta que uneix ambdós, veureu més dades de la inversió que es va fer, concretament:
+Per tal de fer aquesta representació s'ha introduit com a nodes en un graf tant diversos inversors de renom (columna `Investor`) com algunes companyies en les quals aquests inversors pressumiblement han invertit (columna `Investment`). Una aresta entre un inversor (`Investor`) i una inversió (`Investment`) implica que va haver una operació de compra d'accions per part de l'inversor en aquella companyia. Si us situeu damunt l'aresta que uneix ambdós, veureu més dades de la inversió que es va fer, concretament:
     
 - **Buy Date**: La data de compra de l'acció per part de l'inversor.
-- **Forecast [Investment x2]** o bé **[Investment x2]**: Si surt la primera etiqueta ens indica la data en la qual en el futur s'estima que es dobli una inversió donada; si, pel contrari, surt el segon significa que la inversió ja es va duplicar en valor després de la seva compra i que, per tant, s'ha pogut obtenir de dades d'accions que ja són registrades en el passat (tot dependrà de si a la columna de l'excel `Forecast_Sell_Date` -que és d'on es volquen les dades de l'excel per a aquesta etiqueta de l'aresta- la data és posterior al moment en que vaig registrar les dades: 23/02/2023 o no (això queda recollit simplement a la columna `Is_Forecast`).
+- **Forecast [Investment x2]** o bé **[Investment x2]**: si surt la primera etiqueta ens indica la data en la qual en el futur s'estima que es dobli una inversió donada; si, pel contrari, surt el segon significa que la inversió ja es va duplicar en valor després de la seva compra i que, per tant, s'ha pogut obtenir de dades d'accions que ja són registrades en el passat (tot dependrà de si a la columna de l'excel `Forecast_Sell_Date` -que és d'on es volquen les dades de l'excel per a aquesta etiqueta de l'aresta- la data és posterior al moment en que vaig registrar les dades: 23/02/2023 o no (això queda recollit simplement a la columna `Is_Forecast`).
 
 Noteu que tant les columnes `Buy_Date` com `Forecast_Sell_Date` mostren anys i que són derivades de dates més exactes (columnes `PRECISE_Buy_Date` i `PRECISE_Forecast_Sell_Date`) que hipotèticament contenen, de forma respectiva, els moments en que es varen comprar i que es podrien haver venut (o vendre en el futur) al doble del valor pel qual es van comprar. Aquestes dues columnes més precises en termes de moment temporal (no en correspondència amb la realitat!) s'utilitzen per computar la diferència en anys entre el moment de compra i el moment hipotètic de duplicació de la inversió, càlcul que es fa a la columna `Time_Difference` de l'excel. Aquesta columna es fa servir per calcular anys, mesos i dies que passen des de la `PRECISE_Buy_Date`fins a la `PRECISE_Forecast_Sell_Date` i mostrar-ho de forma precisa dins de cada aresta (fent servir la funció `converteixAny_a_AnyMesDia()`).
    
@@ -50,7 +50,7 @@ Per exemple, si vols aplicar filtres per `Investor` hauràs d'assegurar-te que t
     
 ### 1. Sense filtre
 
-Si executeu el programa `__main__grafGuay.py` sense tocar res més veureu codi mostrarà el graf complet. Això és perquè està aplicada la següent linia descomentada.
+Si executeu el programa [`__main__grafGuay.py`](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/__main__grafGuay.py) sense tocar res més veureu codi mostrarà el graf complet. Això és perquè està aplicada la següent linia descomentada.
 
 ```python
 #EXEMPLE SENSE FILTRE (els paràmetres després de fesFiltre poden valdre qualsevol valor, no s'usen; però han d'estar inicialitzats a alguna cosa)
