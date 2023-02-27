@@ -5,7 +5,7 @@ import time
 def perAnysForecast_Sell_Date(ll_punts_seleccionats_filtre, d_noms_nodes, edge, informacioFiltre):
     """ 
     ARGUMENTS: - ll_punts_seleccionats_filtre: Una llista que es o be buida o bé conte punts que es van afegints al filtre en funcio de les propietats demanades.
-               - d_noms_nodes: fem un diccionari clau valor amb nom del node a l'index que ocupa dins de G.nodes() {"IBM": 1, Top 3 QC /QIS trends: 2} ...
+               - d_noms_nodes: fem un diccionari clau valor amb nom del node a l'index que ocupa dins de G.nodes() {"Elon Musk": 1, "Bitcoin": 2} ...
                - edge: una tupla que, desempaquetada, dona lloc a  ---> node1, node2, d_propNode = edge <---: es a dir els noms dels dos nodes units per la 
                     edge i un diccionari amb les pripietats que hi ha definides per a aquesta edge. 
                     Una d'aquestes propietats, "Forecast_Sell_Date", conté el moment per al qual es fa la predicció (sigui emesa per l'Investor, o rebuda 
