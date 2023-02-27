@@ -70,11 +70,12 @@ El Graf és interactiu, i podem veure propietats dels nodes: és a dir, el nom d
 ### 2. Amb filtre
 Tenim 4 filtres possibles, que anirem desgranant en els apartats _2.1_ a _2.4_. Per a aplicar-los hem de deixar el paràmetre booleà `fesFiltre` en `True` i anar a definir la resta de paràmetres `tipusFiltre`i `informacioFiltre`. Noteu que aquests filtres s'apliquen de forma independent (i.e. no pots aplicar dos filtres a l'hora, o dos filtres en sèrie).
 
+Per exemple, per a executar qualsevol dels quatre filtres hem d'assegurar-nos que el codi que mostro en aquest readme per al filtre queda descomentat dins de `if __name__ == "__main__":` (fitxer **[__main__grafGuay.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/__main__grafGuay.py)**):
+
 
 #### 2.1 filtre per intervalForecast_Sell_Date
-El que fa aquest filtre és poder generar un subconjunt d'aquelles inversions que s'han duplicat (i els inversors que les han fet) dins del període temporal definit pels anys enters definits pel límit inferior i superior de l'interval (i que són definits a informacioFiltre). Les inversions i inversors que no compleixen aquest requisit surten difuminats.
+El que fa aquest filtre és poder generar un subconjunt d'aquelles inversions que s'han duplicat (i els inversors que les han fet) dins del període temporal definit pels anys enters definits pel límit inferior i superior de l'interval (i que són definits a informacioFiltre). Les inversions i inversors que no compleixen aquest requisit surten difuminats. El codi de per cridar al filtre és:
 
-Per exemple, per a executar-lo hem d'assegurar-nos que aquest codi queda descomentat dins de `if __name__ == "__main__":` (fitxer **[__main__grafGuay.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/__main__grafGuay.py)**):
 
 ```Python
 #EXEMPLE AMB FILTRE PER Forecast_Sell_Date (mirar un interval d'anys i veure quins inversors han duplicat el valor de les seves inversions)
@@ -99,7 +100,7 @@ I el resultat d'aquesta crida a la funció `crea_grafic()` amb els paràmetres a
 ![filtre_perInversor](src_imgReadme/video_filterByInversor.gif)
 
 ### 2.3. filtre per Time_Difference
-Aquest sistema de filtratge permet mostrar solsament aquells inversors i inversions que s'han duplicat en un període temporal de temps absolut. Per exemple, si poso a informació filtre com a límit inferior el 0 i com a superior l'1 (com és el cas de l'exemple) podré veure els que han tardat entre 0 i 3 anys en duplicar el valor de la seva inversió (Investment):
+Aquest sistema de filtratge permet mostrar solsament aquells inversors i inversions que s'han duplicat en un període temporal de temps absolut. Per exemple, si poso a informació filtre com a límit inferior el 0 i com a superior l'1 (com és el cas de l'exemple) podré veure els que han tardat entre 0 i 3 anys en duplicar el valor de la seva inversió (Investment) independentment de l'any en que això es produís:
 
 ```Python
 #EXEMPLE AMB FILTRE PER Time_Difference (Permet filtrar pel temps que els inversors tarden en duplicar les seves inversions)
