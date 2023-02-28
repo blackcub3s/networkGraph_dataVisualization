@@ -206,9 +206,13 @@ https://github.com/blackcub3s/networkGraph_dataVisualization/blob/a323b0b8cc7341
 
 #### funcions dins de [filtres.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/filtres.py)**
 
-Les tres primeres funcions que especifico són molt similars: Tant _perAnysForecast_Sell_Date()_, com _perInvestor()_, com _perTime_Difference()_ es van aplicant de forma iterativa per a cada edge. La llista `ll` de sortida de cada una és en realitat una actualització del paràmetre d'entrada `ll_punts_seleccionats_filtre` que conté els indexos dels nodes que volem filtrar, i que es van guardant a la llista del mateix nom `ll_punts_seleccionats_filtre` ubicada dins del fitxer [__main__grafGuay.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/__main__grafGuay.py):
+Les tres primeres funcions que especifico són molt similars: Tant _perAnysForecast_Sell_Date()_, com _perInvestor()_, com _perTime_Difference()_ es van aplicant de forma iterativa per a cada edge. La llista `ll` de sortida de cada una d'aquestes funcions-filtre és en realitat una actualització del paràmetre d'entrada `ll_punts_seleccionats_filtre` que conté els indexos dels nodes que volem filtrar, i que es van guardant a la llista del mateix nom `ll_punts_seleccionats_filtre` ubicada dins del fitxer [__main__grafGuay.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/__main__grafGuay.py):
 
 https://github.com/blackcub3s/networkGraph_dataVisualization/blob/394c390cb1509f023efb9bccff56b32f72e1b61e/__main__grafGuay.py#L187-L108
+
+De fet, tant les funcions _perTime_Difference()_ com _perAnysForecast_Sell_Date()_ s'implementen de forma molt similar. Només varia el nom de la clau que li passem al diccionari `d_prop_node`. La funció `perInvestor` té un petit canvi: no aplica filtres per interval sino per coincidència exacta, ja que no tracta amb dades numèriques com l'anterior sino amb fitxers de tipus string.
+
+La funció __timelapse_Time_Difference()__ implementa crides iterartives a __perTime_Difference()__.
 
 ##### funció __perAnysForecast_Sell_Date()__
 https://github.com/blackcub3s/networkGraph_dataVisualization/blob/394c390cb1509f023efb9bccff56b32f72e1b61e/filtres.py#L5-L27
