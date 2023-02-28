@@ -168,6 +168,8 @@ Per exemple, si trobeu que el valor més gran dins de Time_Difference és 21,342
 
 #### funcions dins de [__main__grafGuay.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/__main__grafGuay.py)**
 
+##### informaRepetits()
+
 Dins d'aquest fitxer he programat diverses funcions que considero interessants d'explicar. La primera funció interessant a comentar és `informaRepetits()`. Aquesta funció emana de la problemàtica que es generà a **SSS.py**, on a les línies 25 i 26 els nodes d'investor i investment s'afegeixen al graf `G` de networkX i, alhora, en una llista per tenir-los a mà fàcilment a les línies 27 i 28:
 
 https://github.com/blackcub3s/networkGraph_dataVisualization/blob/71eed338d8e981c9b5be0ffd5e19784a8872bb12/SSS.py#L24-L28
