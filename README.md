@@ -168,7 +168,7 @@ Per exemple, si trobeu que el valor més gran dins de Time_Difference és 21,342
 
 #### funcions dins de [__main__grafGuay.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/__main__grafGuay.py)**
 
-##### informaRepetits()
+##### _informaRepetits()_
 
 Dins d'aquest fitxer he programat diverses funcions que considero interessants d'explicar. La primera funció interessant a comentar és `informaRepetits()`. Aquesta funció emana de la problemàtica que es generà a **SSS.py**, on a les línies 25 i 26 els nodes d'investor i investment s'afegeixen al graf `G` de networkX i, alhora, en una llista per tenir-los a mà fàcilment a les línies 27 i 28:
 
@@ -184,7 +184,7 @@ https://github.com/blackcub3s/networkGraph_dataVisualization/blob/acbb0c9c35ac9c
 
 És clar que tot hagués sigut més senzill si haguessim pogut fixar les propietats corresponents dels nodes mentre els afegiem al graf. Però no va ser possible a partir del fitxer de codi que ens proporcionava l'empresa i la naturalesa de la llibreria.
 
-
+##### _informaRepetits()_
 
 # FER SERVIR EL TEU PROPI DATASET
 
@@ -207,7 +207,9 @@ paràmetres que hi entren. Existeixen regles concretes per emplenar aquests par�
 definir el (ls) del grafic. Podeu fer un gràfic de 0 a 3 anys, per veure els inversors i les inversions que menys temps han tardat a fer inversions que es dupliquessin en valor.
 
 
+##### __converteixAny_a_AnyMesDia()__
 
+https://github.com/blackcub3s/networkGraph_dataVisualization/blob/a323b0b8cc7341d6b4db10ceeda2b2a0706c8493/__main__grafGuay.py#L25-L35
 
 # AUTORIA I DADES DE CONTACTE
 
