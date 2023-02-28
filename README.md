@@ -190,6 +190,18 @@ Aquesta funció és una funció estàndar per passar de temps en anys com a nomb
 
 https://github.com/blackcub3s/networkGraph_dataVisualization/blob/a323b0b8cc7341d6b4db10ceeda2b2a0706c8493/__main__grafGuay.py#L25-L35
 
+
+##### __guarda_o_recupera_coordenades()__
+Aquesta funció ens permet guardar i recuperar les dades de les coordenades, per a fer els timelapse, en fitxers JSON: 
+
+https://github.com/blackcub3s/networkGraph_dataVisualization/blob/a323b0b8cc7341d6b4db10ceeda2b2a0706c8493/__main__grafGuay.py#L38-L59
+
+
+##### __crea_grafic()__
+Finalment, aquí tenim la funció `crea_grafic()` on s'integra tot:
+
+https://github.com/blackcub3s/networkGraph_dataVisualization/blob/a323b0b8cc7341d6b4db10ceeda2b2a0706c8493/__main__grafGuay.py#L106-L379
+
 # FER SERVIR EL TEU PROPI DATASET
 
 En cas que vulgueu fer servir aquesta eina amb el vostre propi dataset heu de fer servir una serie de passos i respectar unes normes, per tal de que el codi produeixi un graf com el que hem vist aquí. A continuació les teniu:
