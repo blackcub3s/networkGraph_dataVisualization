@@ -138,15 +138,15 @@ Per exemple, si trobeu que el valor més gran dins de Time_Difference és 21,342
 - [1. fitxerInversions_inicial.xlsx](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/1.%20fitxerInversions_inicial.xlsx)
     El fitxer on introduim les dades.
 
-- [2. fitxerInversions_parsejatFinal.xlsx](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/2.%20fitxerInversions_parsejatFinal.xlsx): El fitxer que es genera a partir de __1. fitxerInversions_inicial.xlsx__, i que no cal tocar per res (a més de ser un fitxer de sortida obtingut a partir de __1. fitxerInversions_inicial.xlsx__ també és un fitxer d'entrada per al codi).
+- [2. fitxerInversions_parsejatFinal.xlsx](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/2.%20fitxerInversions_parsejatFinal.xlsx): El fitxer que es genera a partir de __1. fitxerInversions_inicial.xlsx__, i que no cal tocar per a res (a més de ser un fitxer de sortida obtingut a partir de __1. fitxerInversions_inicial.xlsx__ també és un fitxer d'entrada per al codi, però l'usuari no l'ha de modificar).
 
 ## FITXERS DE SORTIDA
 
-- _[out_Investors_orderedByNumberOfInvestments.txt](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/out_Investors_orderedByNumberOfInvestments.txt)_: És un fitxer de sortida, que conté TOTS els Investors ordenats de més a menys Investments (inversions) fetes. Útil per a aplicar el filtre que filtra per inversor i veure quins inversors val la pena filtrar per generar resultats amb sentit.
+- _[out_Investors_orderedByNumberOfInvestments.txt](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/out_Investors_orderedByNumberOfInvestments.txt)_: És un fitxer de sortida que conté TOTS els Investors ordenats de més a menys inversions (`Investments`) fetes. Útil per a aplicar el filtre que filtra per inversor i veure quins inversors val la pena representar en el graf perquè es generarin resultats amb sentit.
 
-- _[dic_nodePosicio_guardat.json](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/dic_nodePosicio_guardat.json)_: guarda les posicions dels nodes per recuperar-les cada cop que corres l'script per al timelapse (que requereix un layout constant en totes les imatges). Si afegeixes files a l'excel probablement es destarotarà tot. Si això passa senzillament esborra aquest document _.json_ manualment!
+- _[dic_nodePosicio_guardat.json](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/dic_nodePosicio_guardat.json)_: guarda les posicions dels nodes per recuperar-les cada cop que corres l'script per al timelapse (que, com s'ha dit abans, requereix un layout constant en totes les imatges). Si afegeixes files a l'excel probablement es destarotarà tot. Si això passa senzillament esborra aquest document _.json_ manualment!
 
-- _[timelapse_Time_Difference/](https://github.com/blackcub3s/networkGraph_dataVisualization/tree/main/timelapse_Time_Difference)_: Carpeta on es guardaran els grafics time lapse quan es demani. No esborrar-la!
+- _[timelapse_Time_Difference/](https://github.com/blackcub3s/networkGraph_dataVisualization/tree/main/timelapse_Time_Difference)_: carpeta on es guardaran els grafics time lapse quan es demani. No esborrar-la!
 
 
 ## PROGRAMES
@@ -154,16 +154,15 @@ Per exemple, si trobeu que el valor més gran dins de Time_Difference és 21,342
 ### Llistat d'scripts
 
 - **[SSS.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/SSS.py)**:
-	genera el graf a partir de l'excel __2. fitxerInversions_parsejatFinal.xlsx__ (prenent els diferents Investor(s) i Investment(s), com a nodes; fent edges entre Investor(s) i Investment(s) i passant com a propietat de les edges els atributs "Forecast_Sell_Date"(data en que es van duplicar el valor de les accions després de comprar-les -o data prevista en que es farà-) i "Buy_Date" (data en que es van adquirir les accions).
+	genera el graf a partir de l'excel __2. fitxerInversions_parsejatFinal.xlsx__ (prenent els diferents Investor(s) i Investment(s) com a nodes, fent arestes entre Investor(s) i Investment(s) i, finalment, passant com a propietat de les arestes els atributs `Forecast_Sell_Date`(data en què es van duplicar el valor de les accions després de comprar-les -o data prevista en que això passarà-) i `Buy_Date` (data en que es van adquirir les accions).
 
 - **[__main__grafGuay.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/__main__grafGuay.py)**:
-	Construeix el graf i **integra les funcions dels altres fitxers**, permet modificar els paràmetres dels filtres. **És l'únic codi que cal executar per fer anar el programa, si no fem cap canvi a l'excel**. Té un filtre especial,
-	posat dins un while: que genera time lapses entre dues dates (una imatge per cada any que passa). Per accedir a cada filtre cal eliminar els comentaris fets amb cometes triples, tant per sota com per damunt. 
+	**Integra** les funcions dels fitxers **filtres.py** i **SSS.py** i, també, permet modificar els paràmetres dels filtres i quin d'ells s'aplica cada vegada. _És programa que cal executar per fer anar el programa_ -sempre que no fem cap canvi a l'excel d'entrada **1. fitxerInversions_inicial.xlsx**- i que ens permet accedir a cada filtre sempre que eliminem els comentaris fets amb cometes triples als que no volem executar.
 
 - **[filtres.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/filtres.py)**:
-	Hi ha les funcions per aplicar els filtres, que cridem des de __main__grafGuay.py
+	Hi ha les funcions per aplicar els filtres, que cridem des de **__main__grafGuay.py**
 
-- **[parseExcel.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/parseExcel.py)**: Aquest arxiu obre _1. fitxerInversions_inicial.xlsx_ i permet eliminar el grup "Investor:" de la columna del mateix nom, treure'n els espais per l'esquerra i la dreta[^1] i guardar la columna "Investor_parsejat" dins  "2. fitxerInversions_parsejatFinal.xlsx", que serà la que farà servir _SSS.py_.
+- **[parseExcel.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/parseExcel.py)**: Aquest arxiu obre **1. fitxerInversions_inicial.xlsx** i   permet eliminar el grup "Investor:" que apareix en cada cel·la de columna del mateix nom, treure'n els espais per l'esquerra i la dreta[^1] i guardar la columna "Investor_parsejat" dins  **2. fitxerInversions_parsejatFinal.xlsx**. És aquesta última columna la que farà servir **SSS.py** per a fer el graf (dades que després passaran a **__main__grafGuay.py** per a la seva representació). Només caldrà executar **parseExcel.py** si feu canvis a **1. fitxerInversions_inicial.xlsx**, per a què els canvis es tradueixin a **2. fitxerInversions_parsejatFinal.xlsx** i després ja pogueu aplicar **__main__grafGuay.py**.
 
 ### Decisions de programació per fitxers
 
