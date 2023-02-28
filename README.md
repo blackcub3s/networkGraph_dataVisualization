@@ -170,7 +170,7 @@ Per exemple, si trobeu que el valor més gran dins de Time_Difference és 21,342
 
 En aquest apartat explicaré i/o citaré les quatre funcions del fitxer mencionat: _informaRepetits()_, __converteixAny_a_AnyMesDia()__, __guarda_o_recupera_coordenades()__ i, finalment, __crea_grafic()__:
 
-##### _informaRepetits()_
+##### funció _informaRepetits()_
 
 Dins d'aquest fitxer he programat diverses funcions que considero interessants d'explicar. La primera funció interessant a comentar és `informaRepetits()`. Aquesta funció emana de la problemàtica que es generà a **SSS.py**, on a les línies 25 i 26 els nodes d'investor i investment s'afegeixen al graf `G` de networkX i, alhora, en una llista per tenir-los a mà fàcilment a les línies 27 i 28:
 
@@ -186,29 +186,29 @@ https://github.com/blackcub3s/networkGraph_dataVisualization/blob/acbb0c9c35ac9c
 
 És clar que tot hagués sigut més senzill si haguessim pogut fixar les propietats corresponents dels nodes mentre els afegiem al graf. Però no va ser possible a partir del fitxer de codi que ens proporcionava l'empresa i la naturalesa de la llibreria.
 
-##### __converteixAny_a_AnyMesDia()__
+##### funció __converteixAny_a_AnyMesDia()__
 
 Aquesta funció és una funció estàndar per passar de temps en anys com a nombre real amb decimals (float) a tipus de dades string, amb formateig " A anys, M mesos i D dies", però en anglès. La funció la fem servir per tal de mostrar, en el requadre observable en passar per damunt de les arestes del graf, les diferències temporals entre data de compra i de duplicació de la inversió (diferència anomenada, com hem vist, `Time_Difference`):
 
 https://github.com/blackcub3s/networkGraph_dataVisualization/blob/a323b0b8cc7341d6b4db10ceeda2b2a0706c8493/__main__grafGuay.py#L25-L35
 
 
-##### __guarda_o_recupera_coordenades()__
+##### funció __guarda_o_recupera_coordenades()__
 Aquesta funció ens permet guardar i recuperar les dades de les coordenades, per a fer els timelapse, en fitxers JSON: 
 
 https://github.com/blackcub3s/networkGraph_dataVisualization/blob/a323b0b8cc7341d6b4db10ceeda2b2a0706c8493/__main__grafGuay.py#L38-L59
 
 
-##### __crea_grafic()__
+##### funció __crea_grafic()__
 Finalment, aquí tenim la funció `crea_grafic()` on s'integra tot:
 
 https://github.com/blackcub3s/networkGraph_dataVisualization/blob/a323b0b8cc7341d6b4db10ceeda2b2a0706c8493/__main__grafGuay.py#L106-L379
 
 #### funcions dins de [filtres.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/filtres.py)**
 
+Podeu consultar totes les funcions del fitxer a continuació:
 
 
-TO DO
 
 
 
