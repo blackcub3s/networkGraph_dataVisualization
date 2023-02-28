@@ -184,7 +184,11 @@ https://github.com/blackcub3s/networkGraph_dataVisualization/blob/acbb0c9c35ac9c
 
 És clar que tot hagués sigut més senzill si haguessim pogut fixar les propietats corresponents dels nodes mentre els afegiem al graf. Però no va ser possible a partir del fitxer de codi que ens proporcionava l'empresa i la naturalesa de la llibreria.
 
-##### _informaRepetits()_
+##### __converteixAny_a_AnyMesDia()__
+
+Aquesta funció és una funció estàndar per passar de temps en anys a format anys, mesos i dies: per tal de mostrar en el requadre de les arestes, quan hi passem per sobre, sobre les diferències temporals entre data de compra i de duplicació de la inversió (`Time_Difference`):
+
+https://github.com/blackcub3s/networkGraph_dataVisualization/blob/a323b0b8cc7341d6b4db10ceeda2b2a0706c8493/__main__grafGuay.py#L25-L35
 
 # FER SERVIR EL TEU PROPI DATASET
 
@@ -207,11 +211,8 @@ paràmetres que hi entren. Existeixen regles concretes per emplenar aquests par�
 definir el (ls) del grafic. Podeu fer un gràfic de 0 a 3 anys, per veure els inversors i les inversions que menys temps han tardat a fer inversions que es dupliquessin en valor.
 
 
-##### __converteixAny_a_AnyMesDia()__
 
-Prova
 
-https://github.com/blackcub3s/networkGraph_dataVisualization/blob/a323b0b8cc7341d6b4db10ceeda2b2a0706c8493/__main__grafGuay.py#L25-L35
 
 # AUTORIA I DADES DE CONTACTE
 
