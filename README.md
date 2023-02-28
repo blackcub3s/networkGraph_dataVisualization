@@ -186,7 +186,7 @@ https://github.com/blackcub3s/networkGraph_dataVisualization/blob/acbb0c9c35ac9c
 
 ##### __converteixAny_a_AnyMesDia()__
 
-Aquesta funció és una funció estàndar per passar de temps en anys a format anys, mesos i dies: per tal de mostrar en el requadre de les arestes, quan hi passem per sobre, sobre les diferències temporals entre data de compra i de duplicació de la inversió (`Time_Difference`):
+Aquesta funció és una funció estàndar per passar de temps en anys com a nombre real amb decimals (float) a tipus de dades string, amb formateig " A anys, M mesos i D dies", però en anglès. La funció la fem servir per tal de mostrar, en el requadre observable en passar per damunt de les arestes del graf, les diferències temporals entre data de compra i de duplicació de la inversió (diferència anomenada, com hem vist, `Time_Difference`):
 
 https://github.com/blackcub3s/networkGraph_dataVisualization/blob/a323b0b8cc7341d6b4db10ceeda2b2a0706c8493/__main__grafGuay.py#L25-L35
 
