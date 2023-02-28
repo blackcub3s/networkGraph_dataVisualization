@@ -166,7 +166,9 @@ Per exemple, si trobeu que el valor més gran dins de Time_Difference és 21,342
 
 ### lògica de programació per fitxers
 
-#### funcions dins de [__main__grafGuay.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/__main__grafGuay.py)**
+#### arxiu [__main__grafGuay.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/__main__grafGuay.py)**
+
+En aquest apartat explicaré i/o citaré les quatre funcions del fitxer mencionat: _informaRepetits()_, __converteixAny_a_AnyMesDia()__, __guarda_o_recupera_coordenades()__ i, finalment, __crea_grafic()__:
 
 ##### _informaRepetits()_
 
@@ -201,6 +203,26 @@ https://github.com/blackcub3s/networkGraph_dataVisualization/blob/a323b0b8cc7341
 Finalment, aquí tenim la funció `crea_grafic()` on s'integra tot:
 
 https://github.com/blackcub3s/networkGraph_dataVisualization/blob/a323b0b8cc7341d6b4db10ceeda2b2a0706c8493/__main__grafGuay.py#L106-L379
+
+#### funcions dins de [filtres.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/filtres.py)**
+
+
+
+TO DO
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # FER SERVIR EL TEU PROPI DATASET
 
