@@ -7,23 +7,22 @@ En l'adaptació que he fet s'ha buscat una forma de reaprofitar el treball que v
 
 ## Teconologies utilitzades
 
-Per fer aquest projecte s'ha fet servir `Python`, com a llenguatge de programació i diverses llibreries disponibles per a aquest llenguatge: [][][`plotly`](https://plotly.com/python/), per fer la representació gràfica del graf; [`Networkx`](https://networkx.org/), per tal de representar internament el graf com un conjunt de nodes i d'arestes i passar-los certes propietats. També s'ha fet servir `JSON` per tal de guardar les coordenades de cada node  per successives crides de la funció que crea el gràfic.
+Per fer aquest projecte s'ha fet servir [`Python`](https://www.python.org/), com a llenguatge de programació i diverses llibreries disponibles per a aquest llenguatge: [`plotly`](https://plotly.com/python/), per fer la representació gràfica del graf; [`Networkx`](https://networkx.org/), per tal de representar internament el graf com un conjunt de nodes i d'arestes i passar-los certes propietats. També s'ha fet servir [`JSON`](https://www.json.org/json-en.html) per tal de guardar les coordenades de cada node  per successives crides de la funció que crea el gràfic.
 
 # DESCRIPCIÓ
   
-## Finalitat del programa, explicació de variables en l'excel i en el gràfic
+## Finalitat del programa, explicació de variables de l'excel i del gràfic
 
-Podeu obrir l'excel `1. fitxerInversions_inicial.xlsx` per veure les dades introduides. S'ha escollit fer un sistema per visualitzar inversors i les companyies en les quals aquests inverteixen, tot mostrant en quin moment aquestes inversions es dupliquen en valor (tenen un ROI del 100%).
+Podeu obrir l'excel [`1. fitxerInversions_inicial.xlsx`](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/1.%20fitxerInversions_inicial.xlsx) per veure les dades introduides. S'ha escollit fer un sistema per visualitzar inversors i les companyies en les quals aquests inverteixen, tot mostrant en quin moment aquestes inversions es dupliquen en valor (tenen un ROI del 100%).
     
-Per tal de fer aquesta representació s'ha introduit com a nodes en un graf tant diversos inversors de renom (columna `Investor`) com algunes companyies en les quals aquests inversors pressumiblement han invertit (columna `Investment`). Una aresta entre un inversor (`Investor`) i una inversió (`Investment`) implica que va haver una operació de compra d'accions per part de l'inversor en aquella companyia. Si us situeu damunt l'aresta que uneix ambdós, veureu més dades de la inversió que es va fer, concretament:
+Per tal de fer aquesta representació s'ha introduit com a nodes en un graf tant diversos inversors de renom (columna `Investor`) com algunes companyies en les quals aquests inversors pressumiblement han invertit (columna `Investment`). Una aresta entre un inversor (`Investor`) i una inversió (`Investment`) implica que va haver una operació de compra d'accions per part de l'inversor en aquella companyia. Si us situeu damunt l'aresta que uneix ambdós, veureu més dades de la inversió que va fer l'inversor donat, concretament:
     
 - **Buy Date**: La data de compra de l'acció per part de l'inversor.
-- **Forecast [Investment x2]** o bé **[Investment x2]**: si surt la primera etiqueta ens indica la data en la qual en el futur s'estima que es dobli una inversió donada; si, pel contrari, surt el segon significa que la inversió ja es va duplicar en valor després de la seva compra i que, per tant, s'ha pogut obtenir de dades d'accions que ja són registrades en el passat (tot dependrà de si a la columna de l'excel `Forecast_Sell_Date` -que és d'on es volquen les dades de l'excel per a aquesta etiqueta de l'aresta- la data és posterior al moment en que vaig registrar les dades: 23/02/2023 o no (això queda recollit simplement a la columna `Is_Forecast`).
+- **Forecast [Investment x2]** o bé **[Investment x2]**: Si surt la primera etiqueta ens indica la data en la qual en el futur s'estima avui en dia que es dobli una inversió que un inversor ja va fer (el dia de la `Buy Date`) però que encara no s'ha duplicat; si, pel contrari, surt la segona etiqueta significaria que la inversió ja es va duplicar en valor després de la seva compra i que, per tant, s'ha pogut obtenir quan ha passat això de dades d'accions que ja són registrades en el passat: sigui quin sigui el cas, la data en que la inversió es duplica o es duplicarà potencialment, apareix en la columna de l'excel anomenada `Forecast_Sell_Date` -que és d'on es volquen les dades de l'excel per a aquesta etiqueta de l'aresta-. Si la `Forecast_Sell_Date`fos posterior al moment en que vaig registrar les dades (el dia 23/02/2023) queda recollit com un 1 dins la columna `Is_Forecast`.
 
 Noteu que tant les columnes `Buy_Date` com `Forecast_Sell_Date` mostren anys i que són derivades de dates més exactes (columnes `PRECISE_Buy_Date` i `PRECISE_Forecast_Sell_Date`) que hipotèticament contenen, de forma respectiva, els moments en que es varen comprar i que es podrien haver venut (o vendre en el futur) al doble del valor pel qual es van comprar. Aquestes dues columnes més precises en termes de moment temporal (no en correspondència amb la realitat!) s'utilitzen per computar la diferència en anys entre el moment de compra i el moment hipotètic de duplicació de la inversió, càlcul que es fa a la columna `Time_Difference` de l'excel. Aquesta columna es fa servir per calcular anys, mesos i dies que passen des de la `PRECISE_Buy_Date`fins a la `PRECISE_Forecast_Sell_Date` i mostrar-ho de forma precisa dins de cada aresta (fent servir la funció `converteixAny_a_AnyMesDia()`).
    
 La generació del fitxer de dades `1. fitxerInversions_inicial.xlsx` s'ha obtingut de forma iterativa fent preguntes a [chatgpt (GPT3.5)](https://chat.openai.com/chat). No són dades reals, però es poden aproximar a la realitat, ja que ChatGPT intenta produir dades reals a partir de la base de coneixement disponible a internet fins a l'any 2021. Així doncs, preneu aquest dataset pel que és: una prova de concepte per mostrar coneixement de la llibreria NetworkX, plotly, pandas, etc. i també d'algorismia i coneixement del llenguatge Python, no com un fotografia exacta de la història de les inversions fetes per Elon Musk, Carl Icahn, David Einhorn, George Soros, John Paulston, etc.
-
 
 ## ON FER CANVIS EN LES DADES?
 
@@ -35,14 +34,14 @@ Si heu fet canvis a `1. fitxerInversions_inicial` heu d'executar `parseExcel.py`
 
 Un cop tingueu l'excel llest `1. fitxerInversions_inicial` i tingueu `2. fitxerInversions_parsejatFinal.xlsx` generats (que al repositori ja ho estan) heu d'executar `__main__grafGuay.py`.
 
-En executar el programa `__main__grafGuay.py` veureu que hi ha **5 maneres** possibles d'utilitzar-lo. Cada una d'aquestes maneres és un filtre que genera visualment un graf d'un subconjunt de dades escollit. Cada un d'aquests filtres es pot aplicar executant el frament de codi adient anant dins de  `"if __name__ == "__main__":`
+En executar el programa `__main__grafGuay.py` veureu que hi ha **5 maneres** possibles d'utilitzar-lo. Cada una d'aquestes maneres és un filtre que genera visualment un graf d'un subconjunt de dades escollit. Cada un d'aquests filtres es pot aplicar executant el fragment de codi adient anant dins de  `"if __name__ == "__main__":`
 
-Noteu que tots els filtres estan comentats, menys el que no té filtre i que mostra totes les files que hi ha dins l'excel representades al graf (1. sense filtre). Per accedir a un dels 4 filtres que hi ha (de punts 2.1 a 2.4 de la llista següent) comenta tots els altres i deixa només com a codi llegible per l'intèrpret de python al filtre en questió escollit:
+Noteu que tots els fragments de codi que apliquen filtres estan comentats, menys el fragment de codi que no té filtre i que mostra totes les files que hi ha dins l'excel representades al graf (1. sense filtre). Per accedir a un dels 4 filtres que hi ha (de punts 2.1 a 2.4 de la llista següent) comenta tots els altres i deixa només com a codi llegible per l'intèrpret de python al filtre en questió escollit:
 
 1. sense filtre
 2. amb filtre
     - 2.1 per intervalForecast_Sell_Date
-    - 2.2 per Investor	
+    - 2.2 per Investor
     - 2.3 per Time_Difference
     - 2.4 per timelapse de Time_Difference
 
@@ -50,7 +49,7 @@ Per exemple, si vols aplicar filtres per `Investor` hauràs d'assegurar-te que t
     
 ### 1. Sense filtre
 
-Si executeu el programa [`__main__grafGuay.py`](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/__main__grafGuay.py) sense tocar res més veureu codi mostrarà el graf complet. Això és perquè està aplicada la següent linia descomentada.
+Si executeu el programa [`__main__grafGuay.py`](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/__main__grafGuay.py) sense tocar res més veureu codi mostrarà el graf amb tots els nodes que provenen de l'excel. Això és perquè està aplicada la següent linia descomentada:
 
 ```python
 #EXEMPLE SENSE FILTRE (els paràmetres després de fesFiltre poden valdre qualsevol valor, no s'usen; però han d'estar inicialitzats a alguna cosa)
@@ -58,22 +57,22 @@ crea_grafic(fesFiltre = False,
             tipusFiltre="",
             informacioFiltre=[])  
 ```
-En aplicar aquesta crida a la funció, si el paràmetre fesFiltre està en False, no s'aplica cap filtre al graf que obtindrem desde les dades de l'excel. Ens mostrarà totes les dades que hi ha a l'excel en el graf que es representa obert en una pantalla del navegador, que amb les dades que tenim, serà similar a això (el layout canvia a cada crida de la funció, perquè intervè l'atzar en la funció que el genera):
+En aplicar aquesta crida a la funció `crea_grafic()`, si el paràmetre `fesFiltre = False` aleshores no s'aplica cap filtre al graf que obtindrem desde les dades de l'excel. Ens mostrarà totes les dades que hi ha a l'excel en el graf que es representa obert en una pantalla del navegador, que amb les dades que tenim, serà similar a això (el layout canvia a cada crida de la funció, perquè en la funció que el genera intervé l'atzar):
 
 ![imatgeGrafSenseFiltre](src_imgReadme/SenseFiltre_noHover.png)
 
 
-El Graf és interactiu, i podem veure propietats dels nodes: és a dir, el nom dels inversors i de les empreses on inverteixen. En les arestes que uneixen inversors i inversons també trobem més informació: sobre l'any de compra, l'any potencial de venta per duplicar la inversió i, finalment, el temps -exacte- que passa entre un moment i l'altre. Podeu veure-ho en el següent _.gif_:
+El Graf és interactiu i podem veure propietats dels nodes: és a dir, el nom dels inversors i de les empreses on inverteixen. En les arestes que uneixen inversors i inversions també trobem més informació: sobre l'any de compra, l'any potencial de venta per duplicar la inversió i, finalment, el temps -exacte- que passa entre un moment i l'altre. Podeu veure-ho en el següent _.gif_:
 
 ![gifGrafSenseFiltre](src_imgReadme/Video_NodesArestes_NOFILTER.gif)
 
 ### 2. Amb filtre
 Tenim 4 filtres possibles, que anirem desgranant en els apartats _2.1_ a _2.4_, respectivament. Per a aplicar-los hem de deixar el paràmetre booleà `fesFiltre` en `True` i anar a definir la resta de paràmetres `tipusFiltre`i `informacioFiltre`.[^2] 
 
-Per exemple, per a executar qualsevol dels quatre filtres hem d'assegurar-nos que el codi corresponent a cada filtre queda descomentat dins de `if __name__ == "__main__":` i que tota la resta de filtres estan comentats (veure fitxer **[__main__grafGuay.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/__main__grafGuay.py)**).
+Com hem dit, per a executar qualsevol dels quatre filtres hem d'assegurar-nos que el codi corresponent a cada filtre queda descomentat dins de `if __name__ == "__main__":` i que tota la resta de filtres estan comentats (veure fitxer **[__main__grafGuay.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/__main__grafGuay.py)**).
 
 #### 2.1 filtre per intervalForecast_Sell_Date
-El que fa aquest filtre és poder generar un subconjunt d'aquelles inversions que s'han duplicat (i els inversors que les han fet) dins del període temporal definit pels anys enters definits pel límit inferior i superior de l'interval (i que són definits a informacioFiltre). Les inversions i inversors que no compleixen aquest requisit surten difuminats. El codi de per cridar al filtre és:
+El que fa aquest filtre és poder generar un subconjunt d'aquelles inversions que s'han duplicat (i els inversors que les han fet) dins del període temporal absolut definit pels anys enters mostrats en el límit inferior i superior de l'interval (que són definits a informacioFiltre, com una llista de dos elements). Les inversions i inversors que no compleixen aquest requisit surten difuminats. El codi de per cridar al filtre entre els anys 2015 i 2020 és sel següent:
 
 
 ```Python
@@ -82,24 +81,24 @@ crea_grafic(fesFiltre = True,
             tipusFiltre="intervalForecast_Sell_Date", 
             informacioFiltre=[2015,2020])  #la llista que passem a informacioFiltre conté limit inferior i limit superior, respectivament. Si vols trobar inversors que podrien duplicar la seva inversió en un sol any en concret, fes que conicideixin els limits.
 ```
-El resultat del filtre anterior, que mostra els inversors i les inversions que han fet un x2, entre el 2015 i 2020 (ambdós inclosos) apareix a continuació.
+I el resultat del filtre anterior és: 
 
 ![imatgeFiltrePerForecastSellDate](src_imgReadme/video_ForecastSellDate.gif)
 
 ### 2.2 filtre per Investor	
-Aquí teniu un exemple per filtrar per inversors (Investor). Permet filtrar les inversions d'un o diversos inversors. Els inversors són especificats cada un d'ells com a elements de la llista que es passa al paràmetre `informacioFiltre:`
+Aquí teniu un exemple per filtrar per inversors (`Investor`). Permet filtrar les inversions d'un o diversos inversors. si volem filtrar les inversions que han fet "Elon Musk", "John Paulson" i "George Soros" els passarem com a llista al paràmetre `informacioFiltre`:
 
 ```Python
 crea_grafic(fesFiltre = True,
             tipusFiltre="Investor", 
             informacioFiltre=["Elon Musk", "John Paulson", "George Soros"]) #Si tipusFiltre == ["George Soros"], només veuràs les inversions de Soros.
 ```
-I el resultat d'aquesta crida a la funció `crea_grafic()` amb els paràmetres aquí especificats és aquest:
+I el resultat d'aquesta crida a la funció `crea_grafic()`, amb els paràmetres aquí especificats, serà aquesta:
 
 ![filtre_perInversor](src_imgReadme/video_filterByInversor.gif)
 
 ### 2.3. filtre per Time_Difference
-Aquest sistema de filtratge permet mostrar solsament aquells inversors i inversions que s'han duplicat en un període temporal de temps absolut. Per exemple, si poso a informació filtre com a límit inferior el 0 i com a superior l'1 (com és el cas de l'exemple) podré veure els que han tardat entre 0 i 3 anys en duplicar el valor de la seva inversió (Investment) independentment de l'any en que això es produís:
+Aquest sistema de filtratge permet mostrar solsament aquells inversors i inversions que s'han duplicat en un període temporal de temps relatiu encapçulat entre un límit inferior i limit superior temporal. El filtre mirarà la diferència entre `PRECISE_Forecast_Sell_Date` i `Precise_Buy_Date` (que es la variable `Time_Difference`de l'excel) i filtrarà d'acord amb els límits de l'interval donats. Per definir un filtre com a límit inferior el 0 i com a superior l'1, passarem a informacioFiltre una llista amb dos paràmetres que contenen aquests límits. En l'exemple de codi següent podrem veure com representar les inversions el valor de les quals han tardat entre 0 i 3 anys a duplicar-se, i com representar els inversors que les han dut a terme, independentment de l'any en que es va produir (o espensa que es produirà) la duplicació del seu valor:
 
 ```Python
 #EXEMPLE AMB FILTRE PER Time_Difference (Permet filtrar pel temps que els inversors tarden en duplicar les seves inversions)
@@ -108,19 +107,19 @@ crea_grafic(fesFiltre = True,
             informacioFiltre=[0,3])  #Admet dos arguments: anys d'inici i any de final (deixar en enter millor).
 ```
 
-I el resultat:
+I el resultat del codi anterior és:
 
 ![filtreperTimeDifference](src_imgReadme/filtre_perTimeDifference.png)
 
 ### 2.4. filtre per timelapse de Time_difference
 
-Aquest filtre el que fa és generar fotogrames que permeten generar un timelapse que ajuda a l'analista de dades a fer-se una imatge mental de quant de temps necessiten els inversors per duplicar les seves inversions. En els moments en que s'iluminin més quantitats de nodes per fotograma (cada fotograma és un filtre que s'amplia un any per la dreta) voldrà dir que serà el momen  en que més inversions es dupliquin.
+Aquest filtre és un filtre especial. El que fa és generar fotogrames que permeten generar un timelapse que ajuda a l'analista de dades a fer-se una imatge mental de quant de temps necessiten els inversors per duplicar les seves inversions. En els moments en que s'iluminin més quantitats de nodes per fotograma (cada fotograma és un filtre que s'amplia un any per la dreta) voldrà dir que serà el moment en que més inversions s'hagin duplicat (o s'estima que es dupliquin).
 
-Concretament el que fa aquest filtre és cridar a un altre filtre de forma iterativa, el filtre **Time_Difference**, ja mostrat a l'apartat anterior (_2.3_). A cada iteració de l'altre filtre el que fa és aumentar un any el límit superior del paràmetre informacioFiltre del filtre per **Time_Difference** i, a diferència de l'anterior, guarda cada representació del graf resultant dins la carpeta `timelapse_Time_Difference` com a imatges *.png* en comptes de obrir-lo al navegador.
+Concretament el que fa aquest filtre és cridar a un altre filtre de forma iterativa, el filtre **Time_Difference**, ja mostrat a l'apartat anterior (_2.3_). A cada iteració de l'altre filtre el que fa és aumentar un any el límit superior del paràmetre informacioFiltre del filtre per **Time_Difference** i, a diferència de l'anterior, guarda cada representació del graf resultant dins la carpeta `timelapse_Time_Difference` com a imatges *.png* en comptes d'obrir-lo al navegador.
 
-En executar el filtre `filtres.timelapse_Time_Difference(li = 1, ls = 20)`, tal i com hem deixat implícid, es crida internament la funció `crea_grafic` diversos cops. Amb cada crida el `layout` del graf canviaria, cosa que seria un efecte indesitjat perquè volem que a cada fotograma els nodes ocupin sempre la mateixa posició. La solució fou guardar les coordenades en la primera crida i reaprofitar-les a les següents, tot guardant-les en un `JSON` a la primera iteració.
+En executar el filtre `filtres.timelapse_Time_Difference(li = 1, ls = 20)`, tal i com hem deixat implícid, es crida internament la funció `crea_grafic()` diversos cops. Si no fem res, amb cada crida a la funció `crea_grafic()`el `layout` del graf canviaria cada vegada que s'invoca, cosa que seria un efecte indesitjat perquè volem que a cada fotograma els nodes ocupin sempre la mateixa posició en el pla. La solució fou guardar les coordenades en la primera crida a la funció, tot guardant-les en un `JSON`, i reutilitzar-les per a les següents.
 
-Igual que la resta de filtres, es pot generar el timelapse assegurant-se que l'únic codi actiu dins `if __name__ == "__main__"` sigui aquest:
+Igual que la resta de filtres, amb aquest filtre es pot generar el timelapse assegurant-se que l'únic codi actiu dins `if __name__ == "__main__"` sigui aquest:
 
 ```python
 filtres.timelapse_Time_Difference(li = 0, ls = 12)
@@ -128,7 +127,7 @@ filtres.timelapse_Time_Difference(li = 0, ls = 12)
 
 En executar-lo fareu una imatge per al primer any (0 a 1), per al primer i al segon (0 a 2), per al primer i fins al tercer (0 a 3), ..., fins a arribar a contenir tots els anys de l'interval (0 a 12), en aquest cas un total de 12 anys coberts (no cal fer intervals més grans per què el màxim període per duplicar una inversió, al menys en el dataset que he pujat jo, per als inversors famosos especificats, són poc més d'11 anys. Si definim uns intervals correctes trobarem que a l'últim fotograma tots els nodes del graf estan iluminats.
 
-Per exemple, si trobeu que el valor més gran dins de Time_Difference és 21,34252 aleshores escolliu a ls = 22 perquè l'inclogui. Si veieu que el minim any és 0,5432 aleshores podeu posar li = 0 perquè el filtri. El resultat d'aplicar aquest filtre, un cop editat amb un programa d'edició de vídeo, és el següent:
+Per exemple, si trobeu que el valor més gran dins de Time_Difference és 21,34252 aleshores escolliu a ls = 22 perquè l'inclogui. Si veieu que el minim any és 0,5432 aleshores podeu posar li = 0 perquè el filtri i el mostri al graf. El resultat d'aplicar aquest filtre, un cop units els fotogrames com una seqüència amb un programa d'edició de vídeo, és el següent:
 
 ![TimeLapse_PerTempsDinversions](src_imgReadme/TimeLapse_TimeDifference.gif)
 
