@@ -206,7 +206,7 @@ https://github.com/blackcub3s/networkGraph_dataVisualization/blob/a323b0b8cc7341
 
 #### funcions dins de [filtres.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/filtres.py)**
 
-Les tres primeres funcions que especifico són molt similars: Tant __perAnysForecast_Sell_Date()__, com _perInvestor()_, com _perTime_Difference()_ es van aplicant de forma iterativa per a cada edge. La llista `ll` de sortida de cada una és en realitat una actualització del paràmetre d'entrada `ll_punts_seleccionats_filtre` que conté els indexos dels nodes que volem filtrar, i que es van guardant a la llista del mateix nom `ll_punts_seleccionats_filtre` ubicada dins del fitxer [__main__grafGuay.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/__main__grafGuay.py):
+Les tres primeres funcions que especifico són molt similars: Tant _perAnysForecast_Sell_Date()_, com _perInvestor()_, com _perTime_Difference()_ es van aplicant de forma iterativa per a cada edge. La llista `ll` de sortida de cada una és en realitat una actualització del paràmetre d'entrada `ll_punts_seleccionats_filtre` que conté els indexos dels nodes que volem filtrar, i que es van guardant a la llista del mateix nom `ll_punts_seleccionats_filtre` ubicada dins del fitxer [__main__grafGuay.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/__main__grafGuay.py):
 
 https://github.com/blackcub3s/networkGraph_dataVisualization/blob/394c390cb1509f023efb9bccff56b32f72e1b61e/__main__grafGuay.py#L187-L108
 
