@@ -209,6 +209,8 @@ definir el (ls) del grafic. Podeu fer un gràfic de 0 a 3 anys, per veure els in
 
 ##### __converteixAny_a_AnyMesDia()__
 
+Prova
+
 https://github.com/blackcub3s/networkGraph_dataVisualization/blob/a323b0b8cc7341d6b4db10ceeda2b2a0706c8493/__main__grafGuay.py#L25-L35
 
 # AUTORIA I DADES DE CONTACTE
