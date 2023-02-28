@@ -206,7 +206,23 @@ https://github.com/blackcub3s/networkGraph_dataVisualization/blob/a323b0b8cc7341
 
 #### funcions dins de [filtres.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/filtres.py)**
 
-Podeu consultar totes les funcions del fitxer a continuació:
+Les tres primeres funcions que especifico són molt similars: Tant __perAnysForecast_Sell_Date()__, com __perInvestor()__, com __perTime_Difference()__ es van aplicant de forma iterativa per a cada edge. La llista `ll` de sortida de cada una és en realitat una actualització de del paràmetre d'entrada `ll_punts_seleccionats_filtre` que conté els indexos dels nodes que volem filtrar, i que es van guardant a la llista `ll_punts_seleccionats_filtre` que hi ha a dins del fitxer [__main__grafGuay.py](https://github.com/blackcub3s/networkGraph_dataVisualization/blob/main/__main__grafGuay.py):
+
+https://github.com/blackcub3s/networkGraph_dataVisualization/blob/394c390cb1509f023efb9bccff56b32f72e1b61e/__main__grafGuay.py#L187-L108
+
+##### funció __perAnysForecast_Sell_Date()__
+https://github.com/blackcub3s/networkGraph_dataVisualization/blob/394c390cb1509f023efb9bccff56b32f72e1b61e/filtres.py#L5-L27
+
+##### funció __perInvestor()__
+https://github.com/blackcub3s/networkGraph_dataVisualization/blob/394c390cb1509f023efb9bccff56b32f72e1b61e/filtres.py#L30-L52
+
+##### funció __perTime_Difference()__
+https://github.com/blackcub3s/networkGraph_dataVisualization/blob/394c390cb1509f023efb9bccff56b32f72e1b61e/filtres.py#L55-L70
+
+##### funció __timelapse_Time_Difference()__
+https://github.com/blackcub3s/networkGraph_dataVisualization/blob/394c390cb1509f023efb9bccff56b32f72e1b61e/filtres.py#L74-L102
+
+
 
 
 
